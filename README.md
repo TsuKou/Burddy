@@ -1,24 +1,39 @@
-# README
+# Burddy
+​
+## サイト概要
+### サイトテーマ
+全国のハンバーガー屋と様々なバーガーのレビューと情報共有をサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### テーマを選んだ理由
+ラーメンなど情報共有サイトはを利用し、別にハンバーガーについて調べることがあ
+りました。その際、ハンバーガーの情報共有サイトが存在していなく、詳しく調べる際に
+は様々なサイトを見に行く必要があり手間と時間がかかっていました。
+そこで様々なハンバーガー屋の情報や雰囲気,人気のバーガーメニュー、ご当地ハン
+バーガーなど気になる情報を、まとめたくさんの人と情報共有ができる事ができれば、
+知りたい情報をより詳しく知ることができ、なおかつ必要としているの為になると思い、
+このテーマにしました。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### ターゲットユーザ
+・ふと気になった店の情報を知りたい人
+・おしゃれなハンバーガー屋を探している人
+・気になっている情報がひとまとめになっているサイトを探している方
+​
+### 主な利用シーン
+・ドライブの目的地を選定する判断する時
+・旅先でおすすめの店を探す時
+・街中など気になった店について調べる時
+・食べたいと思っていた物を取り扱ってるか調べる時
+・いつもと違う店を探す時
+​
+## 設計書
+後ほど作成予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 使用した場合、随時追加予定
