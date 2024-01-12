@@ -2,7 +2,7 @@ class Public::ReviewsController < ApplicationController
   def new
     @review = Review.new  # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
   end
-  
+
   def index
     @reviews = Review.all
   end
@@ -23,7 +23,8 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:review_title, :review_comment)
+    params.require(:review).permit(:user_id, :shop_id, :review_title, :review_comment, :star)
+    # レビュー（タイトル、本文、レビュー評価を保存
   end
 
 end

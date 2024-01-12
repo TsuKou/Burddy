@@ -1,0 +1,47 @@
+<h2>新規店舗情報登録画面</h2>
+
+<%= form_with model: @shop, url: admin_shops_path, method: :post do |f| %>
+  <!--admin_shops_path=admin/shops/indexとしてフォーム送信先に指定-->
+  <div>
+    <%= f.label :店舗名 %>
+    <%= f.text_field :shop_name %>
+  </div>
+  <div>
+    <%= f.label :住所 %>
+    <%= f.text_field :shop_address %>
+  </div>
+  <div>
+    <%= f.label :電話番号 %>
+    <%= f.text_field :telephone_number %>
+  </div>
+  <div>
+    <%= f.label :営業時間 %>
+    <%= f.text_field :business_hours %>
+  </div>
+  <div>
+    <%= f.label :定休日 %>
+    <%= f.text_field :regular_holiday %>
+  </div>
+  <div>
+    <%= f.label :アクセス情報%>
+    <%= f.text_field :access_information %>
+  </div>
+  <div>
+    <%= f.label :駐車場 %>
+    <%= f.text_field :parking %>
+  </div>
+  <div>
+    <%= f.label :メニュー %>
+    <%= f.text_area :menu %>
+  </div>
+  <div>
+    <%= f.label :備考_注意点 %>
+    <%= f.text_area :remarks %>
+  </div>
+  <div>
+    <%= f.label :タグ（店舗で取り扱っている分類） %>
+    ここセレクトボックス
+  </div>
+
+  <%= f.submit "新規登録" %>
+<% end %>

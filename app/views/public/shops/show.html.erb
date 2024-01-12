@@ -1,12 +1,33 @@
-<h2>店舗情報</h2>
+管理者側で店舗情報追記画面、機能追加後修正予定
 
-<p>店名</p>
-<p>住所</p>
-<p>電話番号</p>
-<p>営業時間</p>
-<p>定休日</p>
-<p>アクセス情報</p>
-<p>駐車場</p>
-<p>メニュー</p>
-<p>備考/注意点</p>
-<p>タグ</p>
+
+<h2><%= @shop.shop_name %>の店舗情報</h2>
+
+  <p>店舗名</P>
+    <span><%= @shop.shop_name %></span>
+  </div>
+  <P>住所</P>
+    <span><%= @shop.shop_address %></span>
+
+  <P>電話番号</P>
+    <span><%= @shop.telephone_number %></span>
+
+  <P>営業時間</P>
+    <span><%= @shop.business_hours %></span>
+
+  <P>定休日</P>
+    <span><%= @shop.regular_holiday %></span>
+
+  <P>アクセス情</P>
+    <span><%= @shop.access_information %></span>
+
+  <P>駐車場</P>
+    <span><%= @shop.parking %></span>
+
+  <P>メニュー</P>
+    <span><%= @shop.menu %></span>
+
+  <P>住所</P>
+    <span><%= @shop.remarks %></span>
+
+  <%= link_to "レビューする", new_review_path %>
