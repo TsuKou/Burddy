@@ -1,0 +1,24 @@
+
+
+
+
+<h2>お問い合わせ投稿フォーム</h2>
+
+<h2>レビュー数（後から追加）</h2>
+
+<%= form_with model: @contact, url: '/admin/contacts', method: :GET do |f| %>
+  <!--管理者側の店舗レビュー一覧で表示したい為、URLで「/admin/contacts」の指定と、メソッドを固定のためpostを指定-->
+  <h4>お問い合わせされた方の氏名</h4>
+    <%= f.text_field :contact_name %>
+
+  <h4>お問い合わせタイトル</h4>
+    <%= f.text_field :contact_title %>
+
+  <h4>お問い合わせ内容</h4>
+    <%= f.text_area :contact_message %>
+
+  <%= f.submit '送信' %>
+<% end %>
+
+<!--管理者側のcontact.indexでの表示方法について-->
+

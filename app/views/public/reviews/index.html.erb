@@ -1,0 +1,14 @@
+
+
+
+
+<h2>レビュー一覧画面</h2>
+
+<% @reviews.each do |review| %>
+  <P>コメントタイトル</P>
+  <span><%= review.review_title %></span>
+
+  <P>コメント内容</P>
+  <span><%= review.review_comment %></span>
+
+<% end %>

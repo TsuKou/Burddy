@@ -26,15 +26,23 @@ Rails.application.routes.draw do
 
   scope module: :public do #public側のroot_pathを使用し「/」とするためscope module:を使用
     root to: "homes#top"
+    get "contacts/thanks" => "contacts#thanks"
+    get "reviews/thanks" => "reviews#thanks"
 
     resources :contacts, only: [:new, :create]
-    resources :users, only: [:show, :edit, :update, :check, :withdraw]
-    resources :shops, only: [:index]
-    resources :comments, only: [:index, :create, :update, :destroy]
-    resources :reviews, only: [:idnex, :show, :edit, :update, :create, :destroy, :thanks]
+    resources :users, only: [:show, :edit, :update]
+    resources :shops, only: [:index, :show]
+    resources :comments, only: [:new, :index, :create, :update, :destroy]
+    resources :reviews, only: [:new, :index, :show, :edit, :update, :create, :destroy, :thanks]
     resources :favorites, only: [:index, :create, :destroy]
 
+    # URLをカスタマイズするために下記のような記述をしました。
     get "about" => "homes#about", as: "about"
+    get "users/mypage" => "users#show"
+    get "users/information/edit" => "users#edit"
+    patch "users/information" => "users#update"
+    get "users/check" => "users#check"
+    patch "users/withdraw" => "users#withdraw"
   end
 
 

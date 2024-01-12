@@ -1,0 +1,10 @@
+<h2>レビューに対してのコメント一覧</h2>
+
+<% @comments.each do |comment| %>
+  <P>コメントタイトル</P>
+  <span><%= comment.comment_title %></span>
+
+  <P>コメント内容</P>
+  <span><%= comment.comment_body %></span>
+
+<% end %>
