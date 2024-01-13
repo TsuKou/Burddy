@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
   def new
     @comment = Comment.new  # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
+    
   end
 
   def index
@@ -8,12 +9,12 @@ class Public::CommentsController < ApplicationController
   end
 
   def create
-    # １.&2. データを受け取り新規登録するためのインスタンス作成
-    comment = Comment.new(comment_params)
-    # 3. データをデータベースに保存するためのsaveメソッド実行
-    comment.save
-    # 4. レビュー投稿サンクス画面へリダイレクト
-    redirect_to reviews_thanks_path
+    comment = Comment.new(comment_params) # データを受け取り新規登録するためのインスタンス作成
+    comment.save  # データをデータベースに保存するためのsaveメソッド実行
+    redirect_to reviews_thanks_path # コメント投稿サンクス画面へリダイレクト
+  end
+  
+  def destroy
   end
 
   def thanks

@@ -12,17 +12,34 @@
 
   <body>
     <haeder>
+
+      <div><%= link_to "トップページ", root_path %></div>
       <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
-        </li>
+      <div>
+        <%= link_to "お気に入り" %>
+      </div>
+      <div>
+        <%= link_to "レビュー", reviews_path(current_user) %>
+      </div>
+      <div>
+        <%= link_to "いいね♡", favorites_path(current_user) %>
+      </div>
+      <div>
+        <%= link_to "マイページ",users_mypage_path(current_user) %>
+      </div>
+      <div>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
+        </div>
       <% else %>
-        <li>
-          <% link_to "サインアップ", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
+      <div>
+        <%= link_to "About", about_path %>
+      </div>
+      <div>
+        <%= link_to "サインアップ", new_user_registration_path %>
+      </div>
+      <div>
+        <%= link_to "ログイン", new_user_session_path %>
+      </div>
       <% end %>
     </haeder>
     <%= yield %>

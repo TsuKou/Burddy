@@ -1,15 +1,21 @@
-
-
-
-
 <h2>レビュー一覧画面</h2>
 
 <% @reviews.each do |review| %>
-  <P>コメントタイトル</P>
-  <span><%= review.review_title %></span>
+<table>
+  <tr>
+    <th>コメントタイトル</th>
+    <td><%= review.review_title %></td>
 
-  <P>コメント内容</P>
-  <span><%= review.review_comment %></span>
+    <th>コメント内容</th>
+    <td><%= review.review_comment %></td>
 
-  <%= render "static.rate", review: review %>
+    <td>
+      <%= render "static.rate", review: review %>
+    </td>
+
+    <td>
+      <%= link_to "コメントする",new_comment_path(review.id) %>
+    </td>
+  </tr>
+</table>
 <% end %>

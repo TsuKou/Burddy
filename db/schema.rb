@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_12_104434) do
+ActiveRecord::Schema.define(version: 2024_01_13_031719) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2024_01_12_104434) do
     t.text "parking"
     t.text "menu"
     t.text "remarks"
-    t.string "tag"
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

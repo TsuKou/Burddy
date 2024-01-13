@@ -28,13 +28,16 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "contacts/thanks" => "contacts#thanks"
     get "reviews/thanks" => "reviews#thanks"
+    get "tagsearch/search" => "tagsearches#search"
 
     resources :contacts, only: [:new, :create]
     resources :users, only: [:show, :edit, :update]
     resources :shops, only: [:index, :show]
+    resources :favorites, only: [:index]
+    resources :reviews, only: [:new, :index, :show, :edit, :update, :create, :destroy, :thanks] do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :comments, only: [:new, :index, :create, :update, :destroy]
-    resources :reviews, only: [:new, :index, :show, :edit, :update, :create, :destroy, :thanks]
-    resources :favorites, only: [:index, :create, :destroy]
 
     # URLをカスタマイズするために下記のような記述をしました。
     get "about" => "homes#about", as: "about"
