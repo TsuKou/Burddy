@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   def show
-    @user = User.all
+    @user = current_user
   end
 
   def edit

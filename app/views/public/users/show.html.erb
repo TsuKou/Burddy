@@ -1,6 +1,33 @@
 <div>ユーザーマイページ</div>
-<div></div>
-<div></div>
-<div><%= link_to "登録情報編集", edit_user_path(current_user) %></div>
+
+<table>
+  <tr>
+    <th>登録情報</th>
+    <td><%= link_to "登録情報編集", edit_user_path(current_user), class: "btn btn-success" %></td>
+  </tr>
+  <tr>
+    <th>ユーザー名</th><td><%= @user.user_name %></td>
+  </tr>
+   <tr>
+    <th>氏名</th><td><%= @user.full_name %></td>
+  </tr>
+   <tr>
+    <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>
+  </tr>
+   <tr>
+    <th>郵便番号</th><td><%= @user.post_code %></td>
+  </tr>
+   <tr>
+    <th>住所</th><td><%= @user.address %></td>
+  </tr>
+   <tr>
+    <th>電話番号</th><td><%= @user.telephone_number %>
+  </tr>
+   <tr>
+    <th>メールアドレス</th><td><%= @user.email %></td>
+  </tr>
+
+</table>
+
 <div><%= link_to "レビュー", reviews_path(current_user) %></div>
 <div><%= link_to "いいね一覧", favorites_path(current_user) %></div>

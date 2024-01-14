@@ -1,5 +1,50 @@
-<div>会員情報編集</div>
-<div></div>
-<div></div>
-<div><%= link_to "変更保存" %></div>
-<div><%= link_to "退会する", users_check_path %></div>
+<%= form_with model: @user, url: edit_user_path(current_user), method: :patch do |f| %>
+  <table>
+    <tr><th>会員情報編集</th></tr>
+    <tr>
+      <th><%= f.label :ユーザー名（英数字3文字以上） %></th><br />
+      <td><%= f.text_field :user_name %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :名前 %></th>
+      <th>（姓）</th><td><%= f.text_field :last_name %></td>
+      <th>（名）</th><td><%= f.text_field :first_name %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :フリガナ %></th><br />
+      <th>（セイ）</th><td><%= f.text_field :last_name_kana %></td>
+      <th>（メイ）</th><td><%= f.text_field :first_name_kana %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :郵便番号（ハイフン無し） %></th><br />
+      <td><%= f.text_field :post_code %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :住所 %></th><br />
+      <td><%= f.text_field :address %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :電話番号 %></th><br />
+      <td><%= f.text_field :telephone_number %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :メールアドレス %></th><br />
+      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+
+    <tr>
+      <td><%= f.submit "変更保存", class: "btn btn-success"%></td>
+    </tr>
+
+    <tr>
+      <td><%= link_to "退会する", users_check_path, class: "btn btn-danger" %></td>
+    </tr>
+
+  </table>
+<% end %>

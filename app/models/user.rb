@@ -16,6 +16,16 @@ class User < ApplicationRecord
 #---------------
   has_many :follows, dependent: :destroy
 
+  validates :last_name, presence: true # presence = validatesで指定した対象データを空でないようにするヘルパー
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :email, presence: true
+  validates :encrypted_password, presence: true
+  validates :post_code, presence: true
+  validates :address, presence: true
+  validates :telephone_number, presence: true
+
   #ゲストログイン用 User.guestのguestメソッド（機能部分）
   GUEST_USER_EMAIL = "guest@example.com"
 
@@ -24,6 +34,14 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64           #SecureRandom.urlsafe_base64とは...ランダムな文字列を生成するRubyのメソッドの一種
       # user.name = "guestuser"
     end
+  end
+
+  def full_name # 姓と名をあわせフルネームとして表示させる
+    last_name + '' + first_name
+  end
+
+  def full_name_kana # 姓カナと名カナをあわせてフルネームとして表示させる
+    last_name_kana + '' + first_name_kana
   end
 
 end

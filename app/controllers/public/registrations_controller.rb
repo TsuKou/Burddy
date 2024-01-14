@@ -5,8 +5,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys:[:user_name])
-    # 新規登録時(sign_up時)にuser_nameというキーのパラメーターを追加で許可する
+    devise_parameter_sanitizer.permit(:sign_up, keys:[:user_name,
+                                                      :last_name,
+                                                      :first_name,
+                                                      :last_name_kana,
+                                                      :first_name_kana,
+                                                      :post_code,
+                                                      :address,
+                                                      :telephone_number])
+    # 新規登録時(sign_up時)に「keys:[]内」のキーのパラメーターを追加で許可する
   end
 
   # GET /resource/sign_up
@@ -57,7 +64,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    public_root_path # サインアップ後の遷移先トップページへ変更
+    root_path                           # サインアップ後の遷移先トップページへ変更
   end
 
   # The path used after sign up for inactive accounts.

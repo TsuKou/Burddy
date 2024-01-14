@@ -1,26 +1,11 @@
 Rails.application.routes.draw do
-  #↓管理者側
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
-
-  #↓ユーザー側
-  devise_for :users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-
-  #↓ゲストログイン用の設定
-  devise_scope :user do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
-  end
 
   namespace :admin do #namespaceを使用し/admin/から始まるにURLに指定と、指定したいファイル構成パスに指定
     root to: "homes#top"
 
     resources :users, only: [:index, :show, :edit, :update]
     resources :shops, only: [:new, :index, :create, :show, :edit, :update]
-    resources :reviews, only: [:index, :show, :edit]
+    resources :reviews, only: [:index, :show, :edit, :destroy]
     resources :contacts, only: [:index, :show]
   end
 
@@ -53,6 +38,24 @@ Rails.application.routes.draw do
   end
 
 
-
+  # --ここから--管理者側-----
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+  # --ここまで---------------
+  
+  # --ここから--ユーザー側-----
+  devise_for :users, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  # --ここまで---------------
+  
+  # --ここから--ゲストログイン用の設定
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
+  # --ここまで---------------
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
