@@ -1,6 +1,8 @@
 class Favorite < ApplicationRecord
-
+# --ここから--いいね機能のアソシエーション
   belongs_to :user
-  belongs_to :shop
-
+  # favoriteはuserに属している
+  belongs_to :review
+  # favoriteはreviewに属している
+# --ここまで--
 end

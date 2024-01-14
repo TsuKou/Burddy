@@ -3,13 +3,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   # アソシエーション指定
   has_many :shops, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :contacts, dependent: :destroy
+#---------------
   has_many :favorites, dependent: :destroy
+  # ユーザーにたくさんのいいねを持つことができるようにする
+  # いいねはユーザーに依存してるから、ユーザーが消えたらいいねも消えるようにする
+#---------------
   has_many :follows, dependent: :destroy
 
   #ゲストログイン用 User.guestのguestメソッド（機能部分）
