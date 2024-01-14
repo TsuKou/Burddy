@@ -16,6 +16,10 @@
     <td>
       <%= link_to "コメントする",new_comment_path(review.id) %>
     </td>
+
+    <td>
+      <%= render "public/favorites/favorite" , review: review %>
+    </td>
   </tr>
 </table>
 <% end %>

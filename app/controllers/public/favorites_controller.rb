@@ -5,8 +5,8 @@ class Public::FavoritesController < ApplicationController
 
   def create
     review = Review.find(params[:review_id])
-    favorite = current_user.favorites.new(review_id: review.id)
-    favorite.save
+    favorite = current_user.favorites.new(review_id: review.id) # favorite = その時ログインしているユーザーがレビューに対してのreview_idとreview.idを紐づけする
+    favorite.save # いいねを保存
     redirect_to request.referer
   end
 

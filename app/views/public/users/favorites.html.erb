@@ -1,0 +1,11 @@
+<table class="table">
+        <tbody>
+          <% @favorite_reviews.each do |review| %>
+          <tr>
+            <td>
+              <%= link_to review.title, review_path(@review) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>

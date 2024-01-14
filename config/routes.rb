@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     get "tagsearch/search" => "tagsearches#search"
 
     resources :contacts, only: [:new, :create]
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get :favorites
+      end
+    end
     resources :shops, only: [:index, :show]
     resources :favorites, only: [:index]
     resources :reviews, only: [:new, :index, :show, :edit, :update, :create, :destroy, :thanks] do
