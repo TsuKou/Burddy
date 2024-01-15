@@ -14,4 +14,12 @@ class Review < ApplicationRecord
   end
 # --ここまで--
 
+  def self.favorites(user) # モデル内での操作を開始 (user,page, per_page)
+    includes(favorites) # favoritesテーブルを結合
+      .where(favorite: {user_id: user.id}) # ユーザーがいいねしたレコードを絞り込み
+      .order(created_at: :desc) # 投稿を作成日時の降順でソート
+      # .page(page) # 5. ページネーションのため、指定ページに表示するデータを選択
+      # .per(per_page) # 6. ページごとのデータ数を指定
+  end
+
 end

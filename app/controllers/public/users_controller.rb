@@ -13,11 +13,15 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(user) # 変更保存後操作していたユーザー情報画面へ移動
   end
 
+  # def favorite
+  #   @user = User.find(params[:id])
+  #   favorites = Favorite.where(user_id: @user.id).pluck(:review_id)
+  #   @favorite_reviews = Review.find(favorites)
+  #   @review = Review.find(params[:id])
+  # end
+
   def favorites
-    @user = User.find(params[:id])
-    favorites = Favorite.where(user_id: @user.id).pluck(:review_id)
-    @favorite_reviews = Review.find(favorites)
-    @review = Review.find(params[:id])
+    @favorites = Review.favorites(params[:id, :page], 12)
   end
 
     private
