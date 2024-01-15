@@ -1,4 +1,9 @@
-class Public::TagsearchesController < ApplicationController
+class Admin::TagsearchesController < ApplicationController
+  
+  def index
+    
+  end
+  
   def search
     @model = Shop  #search機能とは関係なし
     @word = params[:content]

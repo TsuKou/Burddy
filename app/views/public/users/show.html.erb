@@ -3,13 +3,13 @@
 <table>
   <tr>
     <th>登録情報</th>
-    <td><%= link_to "登録情報編集", edit_user_path(current_user), class: "btn btn-success" %></td>
+    <td><%= link_to "登録情報編集", edit_user_path(@user), class: "btn btn-success" %></td>
   </tr>
   <tr>
     <th>ユーザー名</th><td><%= @user.user_name %></td>
   </tr>
    <tr>
-    <th>氏名</th><td><%= @user.full_name %></td>
+    <th>氏名</th><td><%= @user.last_name %><%= @user.first_name %></td>
   </tr>
    <tr>
     <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>

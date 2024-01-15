@@ -1,6 +1,7 @@
 class Public::FavoritesController < ApplicationController
 
   def index
+    @favorite = Favorite.find(params[:id])
   end
 
   def create

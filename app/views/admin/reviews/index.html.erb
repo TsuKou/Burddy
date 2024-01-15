@@ -2,12 +2,12 @@
 <div>〇〇店のレビュー一覧画面（各ユーザーのレビュー表示）</div>
 
 <% @reviews.each do |review| %>
-<div><%= @users.full_name_kana %></div>
+<p>ここに会員氏名表示予定</p>
 <div><%= review.created_at.strftime('%Y/%m/%d') %></div>
 <div><%= review.review_title %></div>
 <div><%= review.review_comment %></div>
 
-<div><%= link_to "削除", admin_review_paht(review), method: :delete, data: { confirm: '本当に削除しますか?' } %></div>
+<div><%= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: '本当に削除しますか?' } %></div>
 
 
 <% end %>

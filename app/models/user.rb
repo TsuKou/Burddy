@@ -36,12 +36,12 @@ class User < ApplicationRecord
     end
   end
 
-  def full_name # 姓と名をあわせフルネームとして表示させる
-    last_name + '' + first_name
-  end
+  # def full_name # 姓と名をあわせフルネームとして表示させる
+  #   self.last_name + " " + self.first_name
+  # end
 
-  def full_name_kana # 姓カナと名カナをあわせてフルネームとして表示させる
-    last_name_kana + '' + first_name_kana
-  end
+  # def full_name_kana # 姓カナと名カナをあわせてフルネームとして表示させる
+  #   self.last_name_kana + " " + self.first_name_kana
+  # end
 
 end

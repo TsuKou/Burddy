@@ -7,6 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # shop-tagsearch-genreのタグデータ
+
+  # 管理者ログイン情報を以下へ指定
+Admin.create!(
+  email: 'admin@admin.com',
+  password: 'testadmin'
+  )
+
 Tagsearch.create([
   { genre_id: Genre.find_by(genres_name: 'タグ1')},
   { genre_id: Genre.find_by(genres_name: 'タグ2')},

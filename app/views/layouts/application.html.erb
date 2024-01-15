@@ -11,37 +11,70 @@
   </head>
 
   <body>
-    <haeder>
+    <table>
 
-      <div><%= link_to "トップページ", root_path %></div>
-      <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
-      <div>
+      <tr>
+        <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
+        <td>
+          <%= link_to "トップページ", root_path %> <!--ユーザー用トップページ-->
+        </td>
+        <td>
+          <%= render 'public/tagsearches/tag_search' %>
+        </td>
+        <td>
         <%= link_to "お気に入り" %>
-      </div>
-      <div>
+        </td>
+        <td>
         <%= link_to "レビュー", reviews_path(current_user) %>
-      </div>
-      <div>
+        </td>
+        <td>
         <%= link_to "いいね♡", favorites_path(current_user) %>
-      </div>
-      <div>
+        </td>
+        <td>
         <%= link_to "マイページ",users_mypage_path(current_user) %>
-      </div>
-      <div>
+        </td>
+        <td>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
-        </div>
+        </td>
+      </tr>
+      <% elsif admin_signed_in? %>
+      <tr>
+        <td>
+          <%= link_to "トップページ", admin_root_path %> <!--管理者用トップページ-->
+        </td>
+        <td>
+          <%= render 'public/tagsearches/tag_search' %>
+        </td>
+        <td>
+        <%= link_to "店舗一覧", admin_shops_path() %>
+        </td>
+        <td>
+        <%= link_to "会員一覧", admin_users_path(current_user) %>
+        </td>
+        <td>
+        <%= link_to "レビュー一覧", admin_reviews_path(current_user) %>
+        </td>
+        <td>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
+        </td>
+      </tr>
       <% else %>
-      <div>
-        <%= link_to "About", about_path %>
-      </div>
-      <div>
+      <tr>
+        <td>
+          <%= link_to "トップページ", root_path %> <!--ユーザー用トップページ-->
+        </td>
+        <td>
+          <%= link_to "About", about_path %>
+        </td>
+        <td>
         <%= link_to "サインアップ", new_user_registration_path %>
-      </div>
-      <div>
+        </td>
+        <td>
         <%= link_to "ログイン", new_user_session_path %>
-      </div>
+        </td>
       <% end %>
-    </haeder>
+      </tr>
+    </table>
     <%= yield %>
   </body>
 </html>

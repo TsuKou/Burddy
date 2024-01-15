@@ -1,14 +1,15 @@
 <div>Public（ユーザー）側トップページ</div>
   <div>
-    <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post %>
-    <!--ゲストログイン用のリンク-->
-    <!--< if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->-->
-    <!--  <div>ゲストログインでログインしている状態</div>-->
-    <!--< else %>-->
-    <!--  <div>ゲストログインでログインしていない状態</div>-->
-    <!--< end %>-->
 
-<div>確認用でトップページへ表示中</div>
+
+    <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
+      <div>ユーザー作成しログイン中</div>
+    <% else %>
+      <div>ゲストログイン用のリンク</div>
+      <div><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post %></div>
+    <% end %>
+
+<!--<div>確認用でトップページへ表示中</div>-->
 <div><%= link_to "レビュー投稿ページ", new_review_path %></div>
 <div><%= link_to "お問い合わせ投稿ページ", new_contact_path %></div>
 <div></div>

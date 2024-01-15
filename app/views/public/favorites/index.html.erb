@@ -2,5 +2,17 @@
 
 <div>現在ログインしているユーザーがいいねしている店舗の一覧を表示する</div>
 <div>別ユーザーの一覧も表示したい（id指定で表示変更？）</div>
-<div></div>
-<div></div>
+<table>
+  <tr>
+    <th>店舗名</th>
+    <th>投稿日時</th>
+  </tr>
+  <tr>
+    <% @favorite.each do |f| %>
+    <td><%= f.shop_name %></td>
+    <td><%= f.strftime("%Y年%-m月%-d日") %></td>
+    <td><%= render "public/favorites/favorite" %></td>
+    <% end %>
+  </tr>
+
+</table>
