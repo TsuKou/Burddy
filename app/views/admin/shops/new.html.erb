@@ -43,5 +43,22 @@
     ここセレクトボックス
   </div>
 
+  <!-- 以下を追記 -->
+  <div class='form-group'>
+      <%= f.collection_check_boxes(:tag_ids, Tagsearch.all, :id, :genres_name) do |tag| %>
+          <div class='form-check'>
+              <%= tag.label class: 'form-check-label' do %>
+                  <%= tag.check_box class: 'form-check-input' %>
+                  <%= tag.text %>
+              <% end %>
+          </div>
+      <% end %>
+  </div>
+  <!-- ここまで -->
+
+    <%= f.submit '送信' %>
+<% end %>
+
+
   <%= f.submit "新規登録" %>
 <% end %>
