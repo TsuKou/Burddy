@@ -10,8 +10,8 @@
   <tr>
     <td><%= shop.id %></td>
     <td><%= link_to shop.shop_name, admin_shop_path(shop.id) %></td>
-    <td><%=  %></td>
-    <td><%=  %></td>
+    <td><%= shop.reviews.count %></td>
+    <td><%= shop.favorites.count %></td>
   </tr>
   <% end %>
 </table>

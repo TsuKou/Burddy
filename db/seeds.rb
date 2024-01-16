@@ -14,10 +14,10 @@ Admin.create!(
   password: 'testadmin'
   )
 
-Tagsearch.create([
-  { genre_id: Genre.find_by(genres_name: 'タグ1')},
-  { genre_id: Genre.find_by(genres_name: 'タグ2')},
-  { genre_id: Genre.find_by(genres_name: 'タグ3')},
-  { genre_id: Genre.find_by(genres_name: 'タグ4')},
-  { genre_id: Genre.find_by(genres_name: 'タグ5')}
-  ])
+# Tagsearch.create([
+#   { genre_id: Genre.find_by(genres_name: 'タグ1')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ2')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ3')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ4')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ5')}
+#   ])

@@ -11,70 +11,62 @@
   </head>
 
   <body>
-    <table>
-
-      <tr>
-        <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
-        <td>
+      <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
+        <div>
           <%= link_to "トップページ", root_path %> <!--ユーザー用トップページ-->
-        </td>
-        <td>
+        </div>
+        <div>
           <%= render 'public/tagsearches/tag_search' %>
-        </td>
-        <td>
+        </div>
+        <div>
         <%= link_to "お気に入り" %>
-        </td>
-        <td>
-        <%= link_to "レビュー", reviews_path(current_user) %>
-        </td>
-        <td>
-        <%= link_to "いいね♡", favorites_path(current_user) %>
-        </td>
-        <td>
-        <%= link_to "マイページ",users_mypage_path(current_user) %>
-        </td>
-        <td>
+        </div>
+        <div>
+        <%= link_to "レビュー", reviews_path %>
+        </div>
+        <div>
+        <%= link_to "いいね♡", favorites_path %>
+        </div>
+        <div>
+        <%= link_to "マイページ",users_mypage_path %>
+        </div>
+        <div>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
-        </td>
-      </tr>
+        </div>
       <% elsif admin_signed_in? %>
-      <tr>
-        <td>
+        <div>
           <%= link_to "トップページ", admin_root_path %> <!--管理者用トップページ-->
-        </td>
-        <td>
-          <%= render 'public/tagsearches/tag_search' %>
-        </td>
-        <td>
-        <%= link_to "店舗一覧", admin_shops_path() %>
-        </td>
-        <td>
-        <%= link_to "会員一覧", admin_users_path(current_user) %>
-        </td>
-        <td>
-        <%= link_to "レビュー一覧", admin_reviews_path(current_user) %>
-        </td>
-        <td>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
-        </td>
-      </tr>
+        </div>
+        <div>
+          <%= render 'admin/tagsearches/tag_search' %>
+        </div>
+        <div>
+          <%= link_to "店舗一覧", admin_shops_path %>
+        </div>
+        <div>
+          <%= link_to "会員一覧", admin_users_path(current_user) %>
+        </div>
+        <div>
+          <%= link_to "レビュー一覧", admin_reviews_path(current_user) %>
+        </div>
+        <div>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
+        </div>
       <% else %>
-      <tr>
-        <td>
+        <div>
           <%= link_to "トップページ", root_path %> <!--ユーザー用トップページ-->
-        </td>
-        <td>
+        </div>
+        <div>
           <%= link_to "About", about_path %>
-        </td>
-        <td>
-        <%= link_to "サインアップ", new_user_registration_path %>
-        </td>
-        <td>
-        <%= link_to "ログイン", new_user_session_path %>
-        </td>
+        </div>
+        <div>
+          <%= link_to "サインアップ", new_user_registration_path %>
+        </div>
+        <div>
+          <%= link_to "ログイン", new_user_session_path %>
+        </div>
       <% end %>
-      </tr>
-    </table>
+
     <%= yield %>
   </body>
 </html>

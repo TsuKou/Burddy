@@ -1,7 +1,12 @@
 class Public::FavoritesController < ApplicationController
 
   def index
-    @favorite = Favorite.find(params[:id])
+    review_ids = current_user.favorites.pluck(:review_id)
+    # likes = Like.where(user_id: @user.id).pluck(:post_id)
+    @favorite_reviews = Review.find(review_ids)
+    
+    
+    # @favorite = Favorite.find(params[:id])
   end
 
   def create

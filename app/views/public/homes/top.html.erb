@@ -1,6 +1,4 @@
 <div>Public（ユーザー）側トップページ</div>
-  <div>
-
 
     <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
       <div>ユーザー作成しログイン中</div>
@@ -12,4 +10,3 @@
 <!--<div>確認用でトップページへ表示中</div>-->
 <div><%= link_to "レビュー投稿ページ", new_review_path %></div>
 <div><%= link_to "お問い合わせ投稿ページ", new_contact_path %></div>
-<div></div>

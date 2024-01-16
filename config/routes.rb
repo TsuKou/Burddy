@@ -45,8 +45,10 @@ Rails.application.routes.draw do
     resources :favorites, only: [:index]
     resources :reviews, only: [:new, :index, :show, :edit, :update, :create, :destroy, :thanks] do
       resource :favorites, only: [:create, :destroy]
+      resource :comments, only: [:new, :create, :update, :destroy]
     end
-    resources :comments, only: [:new, :index, :create, :update, :destroy]
+    resources :comments, only: [:index]
+    resources :tagsearches, only: [:index]
 
     # URLをカスタマイズするために下記のような記述をしました。
     get "about" => "homes#about", as: "about"

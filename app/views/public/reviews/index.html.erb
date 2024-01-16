@@ -1,25 +1,30 @@
-<h2>レビュー一覧画面</h2>
+<h2><= @user.last_name %>さんのレビュー一覧画面</h2>
 
-<% @reviews.each do |review| %>
 <table>
   <tr>
     <th>コメントタイトル</th>
-    <td><%= review.review_title %></td>
-
     <th>コメント内容</th>
+  </tr>
+  <% @reviews.each do |review| %>
+  <tr>
+    <td> <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->
+      <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
+        <%= image_tag review.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+    </td>
     <td><%= review.review_comment %></td>
-
+    <td><%= review.review_title %></td>
     <td>
       <%= render "static.rate", review: review %>
     </td>
-
     <td>
-      <%= link_to "コメントする",new_comment_path(review.id) %>
+      <%= link_to "コメントする", new_comment_path(review.id) %>
     </td>
-
     <td>
       <%= render "public/favorites/favorite" , review: review %>
     </td>
   </tr>
+  <% end %>
 </table>
-<% end %>
