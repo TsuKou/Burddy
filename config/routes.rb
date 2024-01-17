@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "tagsearches/search" => "tagsearches#search"
 
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+      member do # usersとfavoritesの間に[id]を付けたいので[member]で指定
+        get :favorites
+      end
+    end
     resources :shops, only: [:new, :index, :create, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :destroy]
     resources :contacts, only: [:index, :show]

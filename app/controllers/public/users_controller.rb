@@ -20,10 +20,6 @@ class Public::UsersController < ApplicationController
   #   @review = Review.find(params[:id])
   # end
 
-  def favorites
-    @favorites = Review.favorites(params[:id, :page], 12)
-  end
-
     private
 
   def user_params

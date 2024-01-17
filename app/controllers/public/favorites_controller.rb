@@ -2,10 +2,11 @@ class Public::FavoritesController < ApplicationController
 
   def index
     review_ids = current_user.favorites.pluck(:review_id)
+    #現在ログインしてるユーザー情報からfavorite.pluck(:review_id)を抜き出してreview_idsへ代入　pluckメソッドは（）内の特定カラム値だけを取得する
     # likes = Like.where(user_id: @user.id).pluck(:post_id)
     @favorite_reviews = Review.find(review_ids)
-    
-    
+    @user = current_user #うまくいなかなければif文使用予定
+
     # @favorite = Favorite.find(params[:id])
   end
 

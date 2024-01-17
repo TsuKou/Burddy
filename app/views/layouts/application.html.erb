@@ -11,9 +11,11 @@
   </head>
 
   <body>
+    <header class="sticky-top"> <!--ヘッダーを画面上部に固定する-->
+      <nav class="navbar navbar-light bg-light text-white">
       <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
-        <div>
-          <%= link_to "トップページ", root_path %> <!--ユーザー用トップページ-->
+        <div class="container">
+          <a class="navbar-brand" href="/">Burdduy</a> <!--ユーザー用ログイン後トップページ-->
         </div>
         <div>
           <%= render 'public/tagsearches/tag_search' %>
@@ -34,8 +36,8 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
         </div>
       <% elsif admin_signed_in? %>
-        <div>
-          <%= link_to "トップページ", admin_root_path %> <!--管理者用トップページ-->
+        <div class="container">
+          <a class="navbar-brand" href="/admin">Burdduy（トップページへ）</a> <!--管理者用トップページ-->
         </div>
         <div>
           <%= render 'admin/tagsearches/tag_search' %>
@@ -53,8 +55,8 @@
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
         </div>
       <% else %>
-        <div>
-          <%= link_to "トップページ", root_path %> <!--ユーザー用トップページ-->
+        <div class="container">
+          <a class="navbar-brand" href="/">Burdduy</a> <!--ログイン前用トップページ-->
         </div>
         <div>
           <%= link_to "About", about_path %>
@@ -66,7 +68,15 @@
           <%= link_to "ログイン", new_user_session_path %>
         </div>
       <% end %>
-
+      </nav>
+    </header>
+    <main>
     <%= yield %>
+    </main>
+    <footer>
+      <nav class="fixed-bottom navbar navbar-light bg-dark">
+        <div><a class="navbar-brand, text-white" href="/contacts/new">お問い合わせ</a></div>
+      </nav>
+    </footer>
   </body>
 </html>

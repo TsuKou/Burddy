@@ -2,6 +2,10 @@
 
 <%= form_with model: @shop, url: admin_shops_path, method: :post do |f| %>
   <!--admin_shops_path=admin/shops/indexとしてフォーム送信先に指定-->
+  <di>
+    <%#= f.label :画像%>
+    <%#= f.file_field :image, accept: "image/*" %>
+  </di>
   <div>
     <%= f.label :店舗名 %>
     <%= f.text_field :shop_name %>

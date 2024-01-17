@@ -7,6 +7,7 @@ class Public::CommentsController < ApplicationController
   def index
     @comments = Comment.all
   end
+  
 
   def create
     comment = Comment.new(comment_params) # データを受け取り新規登録するためのインスタンス作成

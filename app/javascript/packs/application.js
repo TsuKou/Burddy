@@ -20,8 +20,8 @@ ActiveStorage.start()
 window.$ = window.jQuery = require('jquery');
 
 import Raty from "raty.js"
-window.raty = function(elem,opt) {
+window.raty = function(elem,opt) {   //function(関数)は、様々な処理を1つにまとめて、名前をつけることができるもの
  let raty =  new Raty(elem,opt)
- raty.init();
+ raty.init(); // initialize (初期化)
  return raty;
 }

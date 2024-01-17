@@ -30,4 +30,4 @@
   <P>住所</P>
     <span><%= @shop.remarks %></span>
 
-  <%= link_to "レビューする", new_review_comments_path(params[:id]) %>
+  <%= link_to "レビューする", new_review_path(shop_id: @shop.id) %>

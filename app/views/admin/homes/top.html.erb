@@ -1,10 +1,42 @@
+<table>
+  <tr>
+    <th>店舗一覧</th>
+  </tr>
+  <% @shops.each do |shop| %>
+  <tr>
+    <td><%= link_to shop.shop_name, admin_shop_path(shop.id) %></td> <!--店舗名-->
+    <td><%= shop.telephone_number %></td><!--店舗_電話番号-->
+    <td><%= shop.shop_address %></td> <!--店舗_住所-->
+  </tr>
+  <% end %>
+</tabl>
 
-<div><%= link_to "店舗一覧", admin_shops_path %> </div>
+<table>
+  <tr>
+    <th>会員一覧</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <!--<td><%#= user.id %></td>--><!--ユーザーID-->
+    <td><%= link_to user.user_name, admin_user_path(user.id) %></td> <!--ユーザー名-->
+    <td><%= link_to user.full_name, admin_user_path(user.id) %></td> <!--会員氏名-->
+    <!--<td><%#= user %></td>--> <!--ステータス-->
+    <td><%= link_to "編集", edit_admin_user_path(user.id), class:"btn btn-sm btn-success" %></td> <!--編集ボタン-->
+  </tr>
+  <% end %>
+</table>
+<table>
+  <tr>
+    <th>レビュー一覧</th>
+  </tr>
+  <% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.review_title %></td> <!--レビュータイトル-->
+    <td><%= review.shop_name %></td> <!--レビューした対象店舗名-->
+    <td><%= review.user_name %></td> <!--レビューしたユーザー名-->
+    <!--<td><%#= review %></td>--> <!---->
+  </tr>
+  <% end %>
+</table>
 
-<div><%= link_to "会員一覧", admin_users_path %></div>
 
-<div><%= link_to "レビュー一覧", admin_reviews_path %></div>
-
-<div><%= link_to "店舗新規登録", new_admin_shop_path %></div>
-
-<div>タグ検索</div>

@@ -1,7 +1,7 @@
 class Admin::ShopsController < ApplicationController
   def new
     @shop = Shop.new
-    @tags = Tag.all
+    # @tags = Tag.all
   end
 
   def index

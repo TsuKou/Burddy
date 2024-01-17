@@ -1,12 +1,31 @@
-<div>Public（ユーザー）側トップページ</div>
+<table>
+  <% @shops.each do |shop| %>
+  <tr>
+    <td>
+      <%= link_to shop.shop_name, shop_path(shop.id) %><br>
+      <%= shop.shop_address %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 
-    <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
-      <div>ユーザー作成しログイン中</div>
-    <% else %>
-      <div>ゲストログイン用のリンク</div>
-      <div><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post %></div>
-    <% end %>
 
-<!--<div>確認用でトップページへ表示中</div>-->
-<div><%= link_to "レビュー投稿ページ", new_review_path %></div>
-<div><%= link_to "お問い合わせ投稿ページ", new_contact_path %></div>
+<table>
+  <% @Reviews.each do |review| %>
+  <tr>
+    <td>
+      <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
+        <%= image_tag review.image, size: "150x150" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "150x150" %>
+      <% end %>
+    </td>
+    <td>
+      <%= review.review_title %><br>
+      <%= review.review_comment %><br>
+      <%= link_to review.shop.shop_name, shop_path(review.shop.id) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+

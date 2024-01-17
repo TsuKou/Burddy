@@ -6,6 +6,10 @@ class Review < ApplicationRecord
   # has_many :favorites, dependent: :destroy
 # --ここから--いいね機能のアソシエーション ログインしていないとエラーが表示されるので、対象コントローラー（今回の場合review）に「before_action...」を追加しておくはじめから、そうすると別ページにリダイレクトしてエラー回避
   has_many :favorites, dependent: :destroy
+
+  has_one_attached :image #reviewで画像を表示する為
+
+
   # いいねはreviewに依存してるからreviewが消えたらいいねも消えるようにする
   def favorited_by?(user)
   # 現在ログインしているユーザーによっていいねされてるか？を判定

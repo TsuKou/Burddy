@@ -1,13 +1,25 @@
-<h2>〇〇のレビュー一覧（新着順）</h2>
-<div>〇〇店のレビュー一覧画面（各ユーザーのレビュー表示）</div>
-
-<% @reviews.each do |review| %>
-<p>ここに会員氏名表示予定</p>
-<div><%= review.created_at.strftime('%Y/%m/%d') %></div>
-<div><%= review.review_title %></div>
-<div><%= review.review_comment %></div>
-
-<div><%= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: '本当に削除しますか?' } %></div>
+<div>レビュー一覧（投稿順）</div>
 
 
-<% end %>
+<table>
+  <tr>
+    <th>レビューID</th>
+    <th>投稿日時</th>
+    <th>店舗名</th>
+    <th>ユーザー名</th>
+    <th>会員氏名</th>
+    <th>レビュータイトル</th>
+  </tr>
+  <% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.id %></td>
+    <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= review.shop.shop_name %></td>
+    <td><%= review.user.user_name %></td>
+    <td><%= review.user.full_name %></td>
+    <td><%= review.review_title %></td>
+  </tr>
+  <% end %>
+</table>
+
+<div><%#= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: '本当に削除しますか?' } %></div>

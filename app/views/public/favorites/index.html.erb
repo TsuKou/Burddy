@@ -1,7 +1,4 @@
-<!--店舗側で表示するいいねの一覧画面-->
-
-<div>現在ログインしているユーザーがいいねしている店舗の一覧を表示する</div>
-<div>別ユーザーの一覧も表示したい（id指定で表示変更？）</div>
+<div><%= @user.user_name %>さんがいいねしているコメント一覧</div>
 <table>
   <tr>
     <th>店舗名</th>
@@ -10,9 +7,9 @@
   <tr>
     <% @favorite_reviews.each do |review| %>
     <td><%= review.shop.shop_name %></td>
-    <td><%= review.review_title %></td>
-    <td><%#= review.strftime("%Y年%-m月%-d日") %></td>
-    <td><%#= render "public/favorites/favorite" %></td>
+    <td><%#= review.review_title %></td>
+    <td><%= review.created_at.strftime("%Y年%-m月%-d日") %></td>
+    <td><%= render "public/favorites/favorite", review: review %></td>
     <% end %>
   </tr>
 
