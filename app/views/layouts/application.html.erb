@@ -12,62 +12,67 @@
 
   <body>
     <header class="sticky-top"> <!--ヘッダーを画面上部に固定する-->
-      <nav class="navbar navbar-light bg-light text-white">
-      <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
-        <div class="container">
-          <a class="navbar-brand" href="/">Burdduy</a> <!--ユーザー用ログイン後トップページ-->
-        </div>
-        <div>
-          <%= render 'public/tagsearches/tag_search' %>
-        </div>
-        <div>
-        <%= link_to "お気に入り" %>
-        </div>
-        <div>
-        <%= link_to "レビュー", reviews_path %>
-        </div>
-        <div>
-        <%= link_to "いいね♡", favorites_path %>
-        </div>
-        <div>
-        <%= link_to "マイページ",users_mypage_path %>
-        </div>
-        <div>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
-        </div>
-      <% elsif admin_signed_in? %>
-        <div class="container">
+    <nav class="navbar navbar-light bg-light text-white">
+      <div class="contaier">
+        <% if user_signed_in? %>
+          <a class="navbar-brand" href="/">Burdduy</a>  <!--ユーザー用ログイン後トップページ-->
+        <% elsif admin_signed_in? %>
           <a class="navbar-brand" href="/admin">Burdduy（トップページへ）</a> <!--管理者用トップページ-->
-        </div>
-        <div>
-          <%= render 'admin/tagsearches/tag_search' %>
-        </div>
-        <div>
-          <%= link_to "店舗一覧", admin_shops_path %>
-        </div>
-        <div>
-          <%= link_to "会員一覧", admin_users_path(current_user) %>
-        </div>
-        <div>
-          <%= link_to "レビュー一覧", admin_reviews_path(current_user) %>
-        </div>
-        <div>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
-        </div>
-      <% else %>
-        <div class="container">
+        <% else %>
           <a class="navbar-brand" href="/">Burdduy</a> <!--ログイン前用トップページ-->
+        <% end %>
+
+        <div class="navbar-nav collapse navbar-collapse show" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
+          <li class="nav-item">
+            <%= render 'public/tagsearches/tag_search' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "お気に入り"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "レビュー", user_review_path(current_user) %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "いいね♡", favorites_path %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "マイページ",users_mypage_path %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
+          </li>
+          <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= render 'admin/tagsearches/tag_search' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "店舗一覧", admin_shops_path %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "会員一覧", admin_users_path(current_user) %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "レビュー一覧", admin_reviews_path(current_user) %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to "About", about_path %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "サインアップ", new_user_registration_path %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path %>
+          </li>
+          <% end %>
+          </ul>
         </div>
-        <div>
-          <%= link_to "About", about_path %>
-        </div>
-        <div>
-          <%= link_to "サインアップ", new_user_registration_path %>
-        </div>
-        <div>
-          <%= link_to "ログイン", new_user_session_path %>
-        </div>
-      <% end %>
+      </div>
       </nav>
     </header>
     <main>

@@ -4,13 +4,16 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user)
+    @user = current_user
   end
 
   def update
-    user = User.find(current_user) # URLからアドレスを引っ張ってきてページへ反映
-    user.update!(user_params)
-    redirect_to user_path(user) # 変更保存後操作していたユーザー情報画面へ移動
+    user = current_user # URLからアドレスを引っ張ってきてページへ反映
+    if user.update(user_params)
+      redirect_to users_mypage_path
+    else
+     render :edit# 変更保存後操作していたユーザー情報画面へ移動
+    end
   end
 
   # def favorite

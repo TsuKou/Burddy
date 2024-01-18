@@ -1,13 +1,18 @@
-<div><%= @user.user_name %>さんがいいねしているコメント一覧</div>
-<table>
+
+<table class="table">
+  <tr>
+    <th><%= @user.user_name %>さんがいいねしているコメント一覧</th>
+  </tr>
   <tr>
     <th>店舗名</th>
+    <th>レビュー者</th>
     <th>投稿日時</th>
+    <th>いいね</th>
   </tr>
   <tr>
     <% @favorite_reviews.each do |review| %>
     <td><%= review.shop.shop_name %></td>
-    <td><%#= review.review_title %></td>
+    <td><%= review.review_title %></td>
     <td><%= review.created_at.strftime("%Y年%-m月%-d日") %></td>
     <td><%= render "public/favorites/favorite", review: review %></td>
     <% end %>

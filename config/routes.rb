@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     patch "users/information" => "users#update"
     get "users/check" => "users#check"
     patch "users/withdraw" => "users#withdraw"
+    get "review/:id/user_show" => "reviews#user_show", as: "user_review" 
   end
 
 

@@ -1,31 +1,43 @@
-<table>
-  <tr>
-    <th>登録情報</th>
-    <td><%= link_to "登録情報編集", edit_user_path(@user), class: "btn btn-success" %></td>
-  </tr>
-  <tr>
-    <th>ユーザー名</th><td><%= @user.user_name %></td>
-  </tr>
-   <tr>
-    <th>氏名</th><td><%= @user.last_name %><%= @user.first_name %></td>
-  </tr>
-   <tr>
-    <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>
-  </tr>
-   <tr>
-    <th>郵便番号</th><td><%= @user.post_code %></td>
-  </tr>
-   <tr>
-    <th>住所</th><td><%= @user.address %></td>
-  </tr>
-   <tr>
-    <th>電話番号</th><td><%= @user.telephone_number %>
-  </tr>
-   <tr>
-    <th>メールアドレス</th><td><%= @user.email %></td>
-  </tr>
+<div class="container">
+  <div class="row mb-2">
+    <div class="col-lg-10">
+     <label class="h4">マイページ</label>
+     <div>
+       <storng>登録情報</storng>
+     </div>
 
-</table>
-
-<div><%= link_to "レビュー", reviews_path(current_user) %></div>
-<div><%= link_to "いいね一覧", favorites_path(current_user) %></div>
+     <table class="table table-borderless">
+     <tr>
+      <td><%= link_to "登録情報編集", edit_user_path(@user.id), class: "btn btn-success" %></td>
+     </tr>
+     <tr>
+      <th>ユーザー名</th><td><%= @user.user_name %></td>
+     </tr>
+      <tr>
+      <th>氏名</th><td><%= @user.last_name %><%= @user.first_name %></td>
+     </tr>
+      <tr>
+      <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>
+     </tr>
+      <tr>
+      <th>郵便番号</th><td><%= @user.post_code %></td>
+     </tr>
+      <tr>
+      <th>住所</th><td><%= @user.address %></td>
+     </tr>
+      <tr>
+      <th>電話番号</th><td><%= @user.telephone_number %>
+     </tr>
+      <tr>
+      <th>メールアドレス</th><td><%= @user.email %></td>
+     </tr>
+     <tr>
+      <td><%= link_to "レビュー", reviews_path(current_user), class:"btn btn-success" %></td>
+     </tr>
+     <tr>
+      <td><%= link_to "いいね一覧", favorites_path(current_user), class:"btn btn-success" %></td>
+     </tr>
+     <tr>
+      <td><%= link_to "コメント一覧",comments_path %></td>
+     </tr>
+     </table>

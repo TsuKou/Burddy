@@ -5,13 +5,24 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.where(user_id: params[:user_id])
     # review_ids = current_user.shops.pluck(:review_id)
     # @shop_reviews = Review.find(review_ids)
     # @reviews = Review.where(user_id: current_user)
     @user = current_user
+    # @user_reviews =
   end
 
+  def show
+    @reviews = Review.where(user_id: params[:id])
+    # whereメソッドを使用してReviewモデル内にある現在ログインしているユーザーIDに紐づいているレビューデータをすべて取り出す
+    @user = User.find(params[:id]) # (params[:id])は一つのデータしか取り出せない
+  end
+
+  def user_show
+    @login_users = Review.where(user_id: current_user.id)
+    @user = User.find(params[:id])
+  end
 
   def create
     # binding.pry #pry-railsコード
@@ -30,7 +41,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:shop_id, :review_title, :review_comment, :category, :star, :image)
+    params.require(:review).permit(:shop_id, :review_id, :review_title, :review_comment, :category, :star, :image)
     # レビュー（ユーザーID, 店舗ID, タイトル、本文、レビュー評価、画像)を保存
   end
 
