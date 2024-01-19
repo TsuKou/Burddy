@@ -1,51 +1,78 @@
-<div>〇〇店の店舗情報編集画面</div>
+<div class="container">
+  <div class="row justify-content-center text-center ">
 
-<%= form_with model: @shop, url: admin_shop_path, method: :PATCH do |f| %>
-  <!--admin_shops_path=admin/shops/indexとしてフォーム送信先に指定-->
-  <div>
-    店舗ID
-    <%= @shop.id %>
-  </div>
-  <div>
-    <%= f.label :店舗名 %>
-    <%= f.text_field :shop_name %>
-  </div>
-  <div>
-    <%= f.label :住所 %>
-    <%= f.text_field :shop_address %>
-  </div>
-  <div>
-    <%= f.label :電話番号 %>
-    <%= f.text_field :telephone_number %>
-  </div>
-  <div>
-    <%= f.label :営業時間 %>
-    <%= f.text_field :business_hours %>
-  </div>
-  <div>
-    <%= f.label :定休日 %>
-    <%= f.text_field :regular_holiday %>
-  </div>
-  <div>
-    <%= f.label :アクセス情報%>
-    <%= f.text_field :access_information %>
-  </div>
-  <div>
-    <%= f.label :駐車場 %>
-    <%= f.text_field :parking %>
-  </div>
-  <div>
-    <%= f.label :メニュー %>
-    <%= f.text_area :menu %>
-  </div>
-  <div>
-    <%= f.label :備考_注意点 %>
-    <%= f.text_area :remarks %>
-  </div>
-  <div>
-    <%= f.label :タグ（店舗で取り扱っている分類category） %>
-    <%= f.text_field :category %>
-  </div>
+    <div>
+      <h2 class="mb-5">〇〇店の店舗情報編集画面</h2>
 
-  <%= f.submit "変更保存" %>
-<% end %>
+      <%= form_with model: @shop, url: admin_shop_path, method: :PATCH do |f| %>
+        <!--admin_shops_path=admin/shops/indexとしてフォーム送信先に指定-->
+        <div class="mb-3">
+          <%= f.label :店舗ID %>
+          <%= @shop.id %>
+        </div>
+        
+        
+        
+        
+        <div class="row justify-content-start">
+          <div class="col-4 my-1">
+            <p class="my-3">店舗ID</p>
+            <p class="my-4">店舗名</p>
+            <p class="my-4">住所</p>
+            <p class="my-5">電話番号</p>
+            <p class="my-4">営業時間</p>
+            <p class="my-3">定休日</p>
+            <p class="my-3">アクセス情報</p>
+            <p class="my-3">駐車場</p>
+          　<p class="my-3">メニュー</p>
+          　<p class="my-3">備考_注意点</p>
+          　<p class="my-3">タグ（店舗で取り扱っている分類category</p>
+          </div>
+
+          <div class="col-8 my-3">
+            <div class="form-group">
+              <%= @shop.id %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :shop_name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :shop_address, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :telephone_number, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :business_hours, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :regular_holiday, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :access_information, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :parking, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_area :menu, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_area :remarks, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :category, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <di></div>
+          <div>
+            <%= f.submit "変更保存" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

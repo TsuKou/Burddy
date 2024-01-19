@@ -1,51 +1,99 @@
-<h2>新規店舗情報登録画面</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background mt-5 mb-4">新規店舗情報登録画面</h2>
+  </div>
 
-<%= form_with model: @shop, url: admin_shops_path, method: :post do |f| %>
+  <%= form_with model: @shop, url: admin_shops_path, method: :post do |f| %>
   <!--admin_shops_path=admin/shops/indexとしてフォーム送信先に指定-->
-  <di>
-    <%#= f.label :画像%>
-    <%#= f.file_field :image, accept: "image/*" %>
-  </di>
-  <div>
-    <%= f.label :店舗名 %>
-    <%= f.text_field :shop_name %>
-  </div>
-  <div>
-    <%= f.label :住所 %>
-    <%= f.text_field :shop_address %>
-  </div>
-  <div>
-    <%= f.label :電話番号 %>
-    <%= f.text_field :telephone_number %>
-  </div>
-  <div>
-    <%= f.label :営業時間 %>
-    <%= f.text_field :business_hours %>
-  </div>
-  <div>
-    <%= f.label :定休日 %>
-    <%= f.text_field :regular_holiday %>
-  </div>
-  <div>
-    <%= f.label :アクセス情報%>
-    <%= f.text_field :access_information %>
-  </div>
-  <div>
-    <%= f.label :駐車場 %>
-    <%= f.text_field :parking %>
-  </div>
-  <div>
-    <%= f.label :メニュー %>
-    <%= f.text_area :menu %>
-  </div>
-  <div>
-    <%= f.label :備考_注意点 %>
-    <%= f.text_area :remarks %>
-  </div>
-  <div>
-    <%= f.label :タグ（店舗で取り扱っている分類category） %>
-    <%= f.text_field :category %>
-  </div>
 
-  <%= f.submit "新規登録" %>
-<% end %>
+  <div class="row justify-content-center">
+    <div class="col-5">
+
+      <!--<div class="field form-group">-->
+      <!--  <div class="form-inline">-->
+          <%#= f.label :画像%>
+      <!--  </div>-->
+      <!--  <div class="form-inline">-->
+          <%#= f.file_field :image, accept: "image/*" %>
+      <!--  <div>-->
+      <!--</div>-->
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :店舗名 %>
+          <%= f.text_field :shop_name %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :住所 %>
+          <%= f.text_field :shop_address %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :電話番号 %>
+          <%= f.text_field :telephone_number %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :営業時間 %>
+          <%= f.text_field :business_hours %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :定休日 %>
+          <%= f.text_field :regular_holiday %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :アクセス情報%>
+          <%= f.text_field :access_information %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :駐車場 %>
+          <%= f.text_field :parking %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :メニュー %>
+          <%= f.text_area :menu %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :備考_注意点 %>
+          <%= f.text_area :remarks %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :タグ（店舗で取り扱っている分類category） %>
+          <%= f.text_field :category %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.submit "新規登録" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

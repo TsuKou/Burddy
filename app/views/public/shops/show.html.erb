@@ -1,33 +1,50 @@
-管理者側で店舗情報追記画面、機能追加後修正予定
-
-
-<h2><%= @shop.shop_name %>の店舗情報</h2>
-
-  <p>店舗名</P>
-    <span><%= @shop.shop_name %></span>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background my-5"><%= @shop.shop_name %>の店舗情報</h2>
   </div>
-  <P>住所</P>
-    <span><%= @shop.shop_address %></span>
 
-  <P>電話番号</P>
-    <span><%= @shop.telephone_number %></span>
-
-  <P>営業時間</P>
-    <span><%= @shop.business_hours %></span>
-
-  <P>定休日</P>
-    <span><%= @shop.regular_holiday %></span>
-
-  <P>アクセス情</P>
-    <span><%= @shop.access_information %></span>
-
-  <P>駐車場</P>
-    <span><%= @shop.parking %></span>
-
-  <P>メニュー</P>
-    <span><%= @shop.menu %></span>
-
-  <P>住所</P>
-    <span><%= @shop.remarks %></span>
-
-  <%= link_to "レビューする", new_review_path(shop_id: @shop.id) %>
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>店舗名</th>
+          <td><%= @shop.shop_name %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @shop.shop_address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @shop.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td><%= @shop.business_hours %></td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td><%= @shop.regular_holiday %></td>
+        </tr>
+        <tr>
+          <th>アクセス情報</th>
+          <td><%= @shop.access_information %></td>
+        </tr>
+        <tr>
+          <th>駐車場</th>
+          <td><%= @shop.parking %></td>
+        </tr>
+        <tr>
+          <th>備考</th>
+          <td><%= @shop.remarks %></td>
+        </tr>
+        
+        <tr>
+          <td>
+            <%= link_to "レビューする", new_review_path(shop_id: @shop.id) %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

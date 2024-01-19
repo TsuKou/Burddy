@@ -41,7 +41,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:shop_id, :review_id, :review_title, :review_comment, :category, :star, :image)
+    params.require(:review).permit(:review_id, :user_id, :shop_id, :review_title, :review_comment, :category, :star, :image)
     # レビュー（ユーザーID, 店舗ID, タイトル、本文、レビュー評価、画像)を保存
   end
 

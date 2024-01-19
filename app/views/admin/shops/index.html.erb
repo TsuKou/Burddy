@@ -1,20 +1,36 @@
-<h2>店舗一覧</h2>
-<div><%= link_to "店舗新規登録", new_admin_shop_path, class:"btn btn-ml btn-success" %></div>
-<table>
-  <tr>
-    <th>店舗ID</th>
-    <th>店舗名</th>
-    <th>レビュー数</th>
-    <th>いいね数</th>
-  </tr>
-  <% @shops.each do |shop| %>
-  <tr>
-    <td><%= shop.id %></td>
-    <td><%= link_to shop.shop_name, admin_shop_path(shop.id) %></td>
-    <td><%= shop.reviews.count %></td>
-    <td><%= shop.favorites.count %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background my-4">店舗一覧</h2>
+  </div>
+
+  <div class="row justify-content-end">
+    <table>
+      <tr>
+        <td><%= link_to "店舗新規登録", new_admin_shop_path, class:"btn btn-ml btn-success mb-4 mr-5" %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>店舗ID</th>
+          <th>店舗名</th>
+          <th>レビュー数</th>
+          <th>いいね数</th>
+        </tr>
+        <% @shops.each do |shop| %>
+        <tr>
+          <td><%= shop.id %></td>
+          <td><%= link_to shop.shop_name, admin_shop_path(shop.id) %></td>
+          <td><%= shop.reviews.count %></td>
+          <td><%= shop.favorites.count %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 
 

@@ -1,19 +1,26 @@
-<div>会員一覧、登録ユーザー一覧画面</div>
-<table>
-  <tr>
-    <th>会員ID</th>
-    <th>ユーザー名</th>
-    <th>氏名</th>
-    <th>メールアドレス</th>
-  </tr>
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= user.id %></td>
-    <td><%= user.user_name %></td>
-    <td><%= link_to user.last_name, admin_user_path(user) %><%= user.first_name %></td>
-    <td><%= user.email %></td>
-  </tr>
-  <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background my-5">会員一覧画面</h2>
+  </div>
 
-</table>
-
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>会員ID</th>
+          <th>ユーザー名</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.user_name %></td>
+          <td><%= link_to user.full_name, admin_user_path(user) %></td>
+          <td><%= user.email %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

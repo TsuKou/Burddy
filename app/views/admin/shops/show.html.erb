@@ -1,35 +1,79 @@
-<h2><%= @shop.shop_name %>の店舗情報</h2>
-
-  <p>店舗名</P>
-    <span><%= @shop.shop_name %></span>
+<div class="container">
+  <div class="row text-center justify-content-center">
+    <h2 class="title-background my-5"><%= @shop.shop_name %>の店舗情報</h2>
   </div>
-  <P>住所</P>
-    <span><%= @shop.shop_address %></span>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>店舗名</th>
+            <td><%= @shop.shop_name %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @shop.shop_address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @shop.telephone_number %></td>
+          </tr>
+          <tr>
+            <th>営業時間</th>
+            <td><%= @shop.business_hours %></td>
+          </tr>
+          <tr>
+            <th>定休日</th>
+            <td><%= @shop.regular_holiday %></td>
+          </tr>
+          <tr>
+            <th>アクセス情報</th>
+            <td><%= @shop.access_information %></td>
+          </tr>
+          <tr>
+            <th>駐車場</th>
+            <td><%= @shop.parking %></td>
+          </tr>
+          <tr>
+            <th>メニュー</th>
+            <td><%= @shop.menu %></td>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <td><%= @shop.category %></td>
+          </tr>
 
-  <P>電話番号</P>
-    <span><%= @shop.telephone_number %></span>
+          <tr>
+            <td>
+              <%= link_to "情報編集", edit_admin_shop_path(params[:id]), class: "btn btn-success mt-4 px-4" %> <!--(params[:id])で表示している店舗IDを取得-->
+            </td>
+            <td>
+              <%= link_to "レビュー一覧", admin_reviews_path(params[:id]), class: "btn btn-success mt-4 ml-5 px-5" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-  <P>営業時間</P>
-    <span><%= @shop.business_hours %></span>
 
-  <P>定休日</P>
-    <span><%= @shop.regular_holiday %></span>
 
-  <P>アクセス情</P>
-    <span><%= @shop.access_information %></span>
 
-  <P>駐車場</P>
-    <span><%= @shop.parking %></span>
 
-  <P>メニュー</P>
-    <span><%= @shop.menu %></span>
 
-  <P>住所</P>
-    <span><%= @shop.remarks %></span>
 
-  <P>タグ</P>
-  <span><%= @shop.category %></span>
 
-<%= link_to "情報編集", edit_admin_shop_path(params[:id]) %> <!--(params[:id])で表示している店舗IDを取得-->
-<%= link_to "レビュー一覧", admin_reviews_path(params[:id]) %>
+
+
+
+
+
+
+
+
+
+
+
+
 <%#= link_to "いいね一覧", favorites_user_path(params[:id]) %>

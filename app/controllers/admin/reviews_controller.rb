@@ -5,6 +5,13 @@ class Admin::ReviewsController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @review = Review.find(params[:id])
+    @user = User.find(params[:id])
+
+    # review_id = Rview.where(review_id)
+  end
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
