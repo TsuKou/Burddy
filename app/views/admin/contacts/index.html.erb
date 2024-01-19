@@ -1,15 +1,17 @@
-<h2>店舗に対してのレビュー一覧</h2>
-
-<% @contacts.each do |contact| %>
-  <p>お問い合わせされた方の氏名</p>
-  <span><%= contact.contact_name %></span>
-
-  <p>お問い合わせタイトル</p>
-  <span><%= contact.contact_title %></span>
-
-  <p>お問い合わせ内容</p>
-  <span><%= contact.contact_message %></span>
-<% end %>
-
+<h2>お問い合わせ一覧</h2>
+<table>
+  <tr>
+    <th>お問い合わせされた方の氏名</th>
+    <th>お問い合わせタイトル</th>
+    <th>お問い合わせ内容</th>
+  </tr>
+  <% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact._name %></td>
+    <td><%= contact.contact_title %></td>
+    <td><%= contact.contact_message %></td>
+  </tr>
+  <% end %>
+</table>
 
 

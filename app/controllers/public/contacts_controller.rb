@@ -4,12 +4,12 @@ class Public::ContactsController < ApplicationController
   end
 
   def create
-    # １.&2. データを受け取り新規登録するためのインスタンス作成
-    contact = Contact.new(contact_params)
-    # 3. データをデータベースに保存するためのsaveメソッド実行
-    contact.save
-    # 4. お問い合わせサンクス画面へリダイレクト
-    redirect_to contacts_thanks_path
+    contact = Contact.new(contact_params)   # １.&2. データを受け取り新規登録するためのインスタンス作成
+    if contact.save                         # 3. データをデータベースに保存するためのsaveメソッド実行
+      redirect_to contacts_thanks_path      # 4. お問い合わせサンクス画面へリダイレクト
+    else
+      render :new                           #失敗したらNewアクションへ遷移
+    end
   end
 
   def thanks

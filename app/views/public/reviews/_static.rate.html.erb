@@ -1,17 +1,13 @@
-<div id="star_<%= review.id %>"></div>
-<script>
-$(document).on('turbolinks:load', function() {
-  let elem = document.querySelector('#star_<%= review.id %>');
-  if (elem == null) return;
+  <div id="stars">  </div>
 
-  elem.innerHTML = "";
+  <script>
+  let elem = document.querySelector('#stars');
   let opt = {
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
-    score: "<%= review.star %>",
-    readOnly: true,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[star]',
+    readOnly: true
   };
-  raty(elem, opt);
-});
-</script>
+  window.raty(elem, opt);
+  </script>

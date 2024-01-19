@@ -32,8 +32,8 @@
   <% @reviews.each do |review| %>
   <tr>
     <td><%= review.review_title %></td> <!--レビュータイトル-->
-    <td><%= review.shop_name %></td> <!--レビューした対象店舗名-->
-    <td><%= review.user_name %></td> <!--レビューしたユーザー名-->
+    <td><%= review.shop.shop_name %></td> <!--レビューした対象店舗名-->
+    <td><%= review.user.user_name %></td> <!--レビューしたユーザー名-->
     <!--<td><%#= review %></td>--> <!---->
   </tr>
   <% end %>

@@ -56,6 +56,9 @@
           <li class="nav-item">
             <%= link_to "レビュー一覧", admin_reviews_path(current_user) %>
           </li>
+          <li>
+            <%= link_to "お問い合わせ", admin_contacts_path %>
+          </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
           </li>
