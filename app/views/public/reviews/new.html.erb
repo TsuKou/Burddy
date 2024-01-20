@@ -3,7 +3,7 @@
     <h2 class="title-background mt-5 mb-4">レビュー投稿フォーム</h2>
   </div>
 
-  <%= form_with model: @review, url: '/admin/reviews', method: :post, local: true do |f| %>
+  <%= form_with model: @review, url: '/reviews', method: :post, local: true do |f| %>
   <!--URLの指定で管理者側の店舗レビュー一覧画面へデータ送信,ユーザー側は管理者側からデータを引っ張ってくる予定-->
 
   <div class="row justify-content-center">
@@ -58,8 +58,8 @@
       </div>
 
   <%= f.hidden_field :shop_id %> <!--表示させないがshop_idを送るために必要-->
-  <%= f.hidden_field :review_id %> <!--表示させないがreview_idを送るために必要-->
-  <%= f.hidden_field :user_id %>
+  <%#= f.hidden_field :review_id %> <!--表示させないがreview_idを送るために必要-->
+  <%#= f.hidden_field :user_id %>
 <% end %>
 
 

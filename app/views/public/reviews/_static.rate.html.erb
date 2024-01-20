@@ -1,13 +1,2 @@
-  <div id="stars">  </div>
+  <div id="star_<%= review.id%>" class='stars' data-score='<%= review.star %>'></div>
 
-  <script>
-  let elem = document.querySelector('#stars');
-  let opt = {
-    starOff: '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'review[star]',
-    readOnly: true
-  };
-  window.raty(elem, opt);
-  </script>

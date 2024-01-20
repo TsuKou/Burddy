@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       end
     end
     resources :shops, only: [:new, :index, :create, :show, :edit, :update]
-    resources :reviews, only: [:index, :show, :edit, :destroy]
+    resources :reviews, only: [:index, :show, :create, :edit, :destroy]
     resources :contacts, only: [:index, :show]
     resources :tagsearches, only: [:index]
   end
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     get "reviews/thanks" => "reviews#thanks"
     get "tagsearches/search" => "tagsearches#search"
 
-    resources :contacts, only: [:new, :create]
+    resources :contacts, only: [:new, :create, :index, :show]
     resources :users, only: [:show, :edit, :update] do
       member do
         get :favorites
@@ -47,11 +47,12 @@ Rails.application.routes.draw do
     end
     resources :shops, only: [:index, :show]
     resources :favorites, only: [:index]
+    resources :comments, only: [:index]
     resources :reviews, only: [:new, :index, :show, :edit, :update, :create, :destroy, :thanks] do
       resource :favorites, only: [:create, :destroy]
       resource :comments, only: [:new, :create, :update, :destroy]
     end
-    resources :comments, only: [:index]
+
     resources :tagsearches, only: [:index]
 
     # URLをカスタマイズするために下記のような記述をしました。
@@ -61,7 +62,7 @@ Rails.application.routes.draw do
     patch "users/information" => "users#update"
     get "users/check" => "users#check"
     patch "users/withdraw" => "users#withdraw"
-    get "review/:id/user_show" => "reviews#user_show", as: "user_review" 
+    get "review/:id/user_show" => "reviews#user_show", as: "user_review"
   end
 
 

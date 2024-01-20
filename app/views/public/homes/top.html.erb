@@ -20,9 +20,9 @@
         <tr>
           <td>
             <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
-              <%= image_tag review.image, size: "150x150" %>
+              <%= image_tag review.image, size: "125x125" %>
             <% else %>
-              <%= image_tag 'no_image', size: "150x150" %>
+              <%= image_tag 'no_image', size: "125x125" %>
             <% end %>
           </td>
           <td>

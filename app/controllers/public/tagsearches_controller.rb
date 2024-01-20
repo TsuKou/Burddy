@@ -1,4 +1,5 @@
 class Public::TagsearchesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :search]
 
   def index
     @shops = Shop.all

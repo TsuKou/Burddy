@@ -1,6 +1,10 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  
   def new
     @comment = Comment.new  # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
+    @comment.review_id = params[:review_id]
   end
 
   def index
@@ -8,11 +12,13 @@ class Public::CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.new(comment_params) # データを受け取り新規登録するためのインスタンス作成
-    if comment.save  # データをデータベースに保存するためのsaveメソッド実行
-    redirect_to comments_path # コメント投稿サンクス画面へリダイレクト
+    @comment = Comment.new(comment_params) # データを受け取り新規登録するためのインスタンス作成
+    @comment.user_id = current_user.id
+
+    if @comment.save  # データをデータベースに保存するためのsaveメソッド実行
+      redirect_to comments_path(@comment.review)
     else
-    redirect_to root_path
+      render :new
     end
   end
 

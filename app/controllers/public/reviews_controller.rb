@@ -1,11 +1,13 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @review = Review.new(shop_id: params[:shop_id])  # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
     # @shop = Review.find(params[:shop_id])
   end
 
   def index
-    @reviews = Review.where(user_id: params[:user_id])
+    @reviews = Review.where(user_id: current_user.id)
     # review_ids = current_user.shops.pluck(:review_id)
     # @shop_reviews = Review.find(review_ids)
     # @reviews = Review.where(user_id: current_user)
@@ -41,7 +43,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:review_id, :user_id, :shop_id, :review_title, :review_comment, :category, :star, :image)
+    params.require(:review).permit(:shop_id, :review_title, :review_comment, :category, :star, :image)
     # レビュー（ユーザーID, 店舗ID, タイトル、本文、レビュー評価、画像)を保存
   end
 

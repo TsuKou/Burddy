@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     review_ids = current_user.favorites.pluck(:review_id)
@@ -12,8 +13,8 @@ class Public::FavoritesController < ApplicationController
 
   def create
     review = Review.find(params[:review_id])
-    favorite = current_user.favorites.new(review_id: review.id) # favorite = その時ログインしているユーザーがレビューに対してのreview_idとreview.idを紐づけする
-    favorite.save # いいねを保存
+    favorite = current_user.favorites.new(review_id: review.id,shop_id: review.shop_id) # favorite = その時ログインしているユーザーがレビューに対してのreview_idとreview.idを紐づけする
+    favorite.save # いいねを保存    # 
     redirect_to request.referer
   end
 

@@ -13,8 +13,8 @@
         </tr>
         <% @contacts.each do |contact| %>
         <tr>
-          <td><%= contact._name %></td>
-          <td><%= contact.contact_title %></td>
+          <td><%= contact.contact_name %></td>
+          <td><%= link_to contact.contact_title, admin_contact_path(contact.id) %></td>
           <td><%= contact.contact_message %></td>
         </tr>
         <% end %>

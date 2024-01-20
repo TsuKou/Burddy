@@ -3,7 +3,7 @@
     <h2 class="title-background mt-5 mb-4">お問い合わせ投稿フォーム</h2>
   </div>
 
-  <%= form_with model: @contact, url: '/admin/contacts', method: :POST do |f| %>
+  <%= form_with model: @contact, method: :POST, local: true do |f| %>
   <!--管理者側の店舗レビュー一覧で表示したい為、URLで「/admin/contacts」の指定と、メソッドを固定のためpostを指定-->
 
     <div class="row justify-content-center">
@@ -45,8 +45,7 @@
 
       </div>
     </div>
-
-<% end %>
+  <% end %>
 
 <!--管理者側のcontact.indexでの表示方法について-->
   </div>
