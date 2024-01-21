@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index]
     resources :reviews, only: [:new, :index, :show, :edit, :update, :create, :destroy, :thanks] do
       resource :favorites, only: [:create, :destroy]
-      resource :comments, only: [:new, :create, :update, :destroy]
+      resource :comments, only: [:new, :create, :edit, :update, :destroy]
     end
 
     resources :tagsearches, only: [:index]

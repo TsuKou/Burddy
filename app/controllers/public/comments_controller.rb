@@ -1,7 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  
+
   def new
     @comment = Comment.new  # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
     @comment.review_id = params[:review_id]
@@ -9,6 +9,10 @@ class Public::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
+  end
+
+  def edit
+    @review_comment = Comment.find(params[:id])
   end
 
   def create

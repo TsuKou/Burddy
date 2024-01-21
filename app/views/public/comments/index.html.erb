@@ -1,13 +1,21 @@
-<h2>レビューに対してのコメント一覧</h2>
-<table>
-  <tr>
-    <th>コメントタイトル</th>
-    <th>コメント内容</th>
-  </tr>
-  <tr>
-    <% @comments.each do |comment| %>
-    <td><%= comment.comment_title %></td>
-    <td><%= comment.comment_body %></td>
-    <% end %>
-  </tr>
-</table>
+<div class="container">
+  <div class="row-10">
+    <h2 class="my-4">コメント一覧</h2>
+    <table class="table">
+      <tr>
+        <th>コメントしたユーザー</th>
+        <th>コメントタイトル</th>
+        <th>コメント内容</th>
+      </tr>
+      <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.review.user.user_name %></td>
+        <td><%= comment.comment_title %></td>
+        <td><%= comment.comment_body %></td>
+        <td><%= link_to "編集", edit_review_comments_path(comment.id) %></td>
+        <td><%= %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
