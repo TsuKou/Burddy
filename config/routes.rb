@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   namespace :admin do #namespaceを使用し/admin/から始まるにURLに指定と、指定したいファイル構成パスに指定
     root to: "homes#top"
     get "tagsearches/search" => "tagsearches#search"
+    get "reviews/:id/shop_index" => "reviews#shop_index", as: "shop_index"
 
     resources :users, only: [:index, :show, :edit, :update] do
       member do # usersとfavoritesの間に[id]を付けたいので[member]で指定
