@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row-10">
+    <h2 class="my-3"><%= @model %>s search for "<%= @word %>"</h2>
+    <table class="table table-hover">
+      <thead>
+          <th>店舗名</th>
+          <th>レビュー数</th>
+          <th>いいね数</th>
+          <th>タグ</th>
+        </tr>
+      </thead>
+      <% @shops.each do |shop| %>
+      <tbody>
+        <tr>
+          <td><%= link_to shop.shop_name, shop_path(shop) %></td>
+          <td><%= shop.reviews.count %></td>
+          <td><%= shop.favorites.count %></td>
+          <td><%= shop.category %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

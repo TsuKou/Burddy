@@ -5,12 +5,88 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/83f3b5beea.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="sticky-top"> <!--ヘッダーを画面上部に固定する-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light text-white">
+        <% if user_signed_in? %>
+          <a class="navbar-brand" href="/">Burdduy</a>  <!--ユーザー用ログイン後トップページ-->
+        <% elsif admin_signed_in? %>
+          <a class="navbar-brand" href="/admin">Burdduy（トップページへ）</a> <!--管理者用トップページ-->
+        <% else %>
+          <a class="navbar-brand" href="/">Burdduy</a> <!--ログイン前用トップページ-->
+        <% end %>
+
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav ">
+            <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
+              <li class="nav-item">
+                <%= render 'public/tagsearches/tag_search', class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "お気に入り", class: "nav-link"%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "レビュー", user_review_path(current_user), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "いいね♡", favorites_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "マイページ",users_mypage_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
+              </li>
+            <% elsif admin_signed_in? %>
+              <li>
+                <%= render 'admin/tagsearches/tag_search', class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "店舗一覧", admin_shops_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "会員一覧", admin_users_path(current_user), class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "レビュー一覧", admin_reviews_path(current_user), class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "お問い合わせ", admin_contacts_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "About", about_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "サインアップ", new_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+      </nav>
+    </header>
+
+    <main>
     <%= yield %>
+    </main>
+
+    <footer>
+      <nav class="fixed-bottom navbar navbar-light bg-dark">
+        <div><a class="navbar-brand, text-white" href="/contacts/new">お問い合わせ</a></div>
+      </nav>
+    </footer>
+
   </body>
 </html>

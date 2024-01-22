@@ -1,0 +1,19 @@
+<!--星レビュー評価機能-->
+
+<%= form_with model: review, local: true do |f| %> <!--同期通信の為「local: true」を記述-->
+  <%= f.label :star,'評価' %>
+  <%= f.hidden_field :star, id: :review_star %>
+
+  <div id="stars"></div>
+
+  <script>
+  let elem = document.querySelector('#stars');
+  let opt = {
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[star]',
+  };
+  window.raty(elem, opt);
+  </script>
+<% end %>

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row text-center justify-content-center">
+    <h2 class="title-background mt-5 mb-4">レビュー投稿フォーム</h2>
+  </div>
+
+  <%= form_with model: @review, url: '/reviews', method: :post, local: true do |f| %>
+  <!--URLの指定で管理者側の店舗レビュー一覧画面へデータ送信,ユーザー側は管理者側からデータを引っ張ってくる予定-->
+
+  <div class="row justify-content-center">
+    <div class="col-5">
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :画像投稿, class: "control-label " %>
+        </div>
+        <div class="form-inline">
+          <%= f.file_field :image, accept: "image/*" %>
+          <!--画像投稿フォーム,accept: "image/*"を使用し画像ファイル歯科投稿できないように設定-->
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :タイトル, class: "control-label justify-content-start" %>
+        </div>
+        <div class="form-inline">
+          <%= f.text_field :review_title, size: 53, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :本文, class: "control-label justify-content-start" %>
+        </div>
+        <div class="form-inline">
+          <%= f.text_area :review_comment, size: "55x7", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :タグ, class: "control-label justify-content-start" %>
+        </div>
+        <div class="form-inline">
+          <%= f.text_field :category, size: 53, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div>
+        <%= render 'star', review: @review %>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-inline">
+          <%= f.label :" ", class: "col-md-3" %>
+          <%= f.submit 'レビュー投稿', class: "btn btn-secondary col-md-5 my-4 ml-3" %>
+        </div>
+      </div>
+
+  <%= f.hidden_field :shop_id %> <!--表示させないがshop_idを送るために必要-->
+  <%#= f.hidden_field :review_id %> <!--表示させないがreview_idを送るために必要-->
+  <%#= f.hidden_field :user_id %>
+<% end %>
+
+
+</div>

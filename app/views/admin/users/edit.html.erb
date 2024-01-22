@@ -1,0 +1,48 @@
+<%= @user.last_name %>さんの会員情報編集
+
+<%= form_with model: @user, url: admin_user_path(@user), local:true do |f| %>
+<!--userモデルを参照し、URLで指定先（表示しているuserID）へ変更したデータを送り更新する-->
+<table class="table table-borderless">
+  <tbody>
+    <tr>
+      <th>会員ID</th>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <td><%= f.text_field :last_name, class:"mr-4" %> <%= f.text_field :first_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= f.text_field :last_name_kana, class:"mr-4" %> <%= f.text_field :first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= f.text_field :telephone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <th>販売ステータス</th> <!--ラジオボックスで作成-->
+　    <td>
+　      <%= f.radio_button :is_active, true %>有効
+　　    <%= f.radio_button :is_active, false %>退会
+　　  </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>

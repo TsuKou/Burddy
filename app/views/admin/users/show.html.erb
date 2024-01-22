@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <label class="h4 mt-5"><%= @user.full_name %>さんの会員情報</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9">
+      <label class="h4 px-4 mt-5 mb-3">登録情報</label>
+    </div>
+    <div class="col-lg-3">
+      <%= link_to "登録情報編集", edit_admin_user_path(@user), class: "btn btn-success px-4 mt-5 mb-3 ml-5" %>
+    </div>
+  </div>
+
+      <table class="table">
+        <tr>
+          <th>会員ID</th><td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th>ユーザー名</th><td><%= @user.user_name %></td>
+        </tr>
+        <tr>
+          <th>氏名</th><td><%= @user.full_name %></td>
+        </tr>
+        <tr>
+          <th>氏名（カナ）</th><td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th><td><%= @user.post_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th><td><%= @user.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th><td><%= @user.telephone_number %>
+        </tr>
+        <tr>
+          <th>メールアドレス</th><td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+          <% if @user.is_active == true %>
+            <p class="text-success">有効</p>
+          <% else %>
+            <p class="text-muted">退会</p>
+          <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

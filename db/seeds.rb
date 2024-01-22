@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# shop-tagsearch-genreのタグデータ
+
+  # 管理者ログイン情報を以下へ指定
+Admin.create!(
+  email: 'admin@admin.com',
+  password: 'testadmin'
+  )
+
+# Tagsearch.create([
+#   { genre_id: Genre.find_by(genres_name: 'タグ1')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ2')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ3')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ4')},
+#   { genre_id: Genre.find_by(genres_name: 'タグ5')}
+#   ])

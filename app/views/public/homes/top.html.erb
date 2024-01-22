@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row align-items-center">
+    <!--1列目-->
+    <div class="col">
+      <table>
+        <% @shops.each do |shop| %>
+        <tr>
+          <td>
+            <%= link_to shop.shop_name, shop_path(shop.id) %><br>
+            <%= shop.shop_address %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <!--2列目-->
+    <div class="col">
+      <table>
+        <% @Reviews.each do |review| %>
+        <tr>
+          <td>
+            <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
+              <%= image_tag review.image, size: "125x125" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "125x125" %>
+            <% end %>
+          </td>
+          <td>
+            <%= review.review_title %><br>
+            <%= review.review_comment %><br>
+            <%= link_to review.user.user_name, review_path(review.id)  %><br>
+            <%= link_to review.shop.shop_name, shop_path(review.shop.id) %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+  </div>
+</div>

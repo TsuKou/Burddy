@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background my-5">お問い合わせ一覧</h2>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>お問い合わせされた方の氏名</th>
+          <th>お問い合わせタイトル</th>
+          <th>お問い合わせ内容</th>
+        </tr>
+        <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= contact.contact_name %></td>
+          <td><%= link_to contact.contact_title, admin_contact_path(contact.id) %></td>
+          <td><%= contact.contact_message %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+

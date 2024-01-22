@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background my-5"><%= @user.user_name %>さんのレビュー内容 </h2>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>レビューID</th><td><%= @review.id %></td>
+        </tr>
+        <tr>
+          <th>会員ID</th><td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th>投稿日時</th><td><%= @review.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th>店舗名</th><td><%= @review.shop.shop_name %></td>
+        </tr>
+        <tr>
+          <th>ユーザー名</th><td><%= @review.user.user_name %></td>
+        </tr>
+        <tr>
+          <th>氏名</th><td><%= @review.user.full_name %></td>
+        </tr>
+      </table>
+
+      <table class="table-bordered", max-width: 100%; >
+        <tr>
+          <th>タイトル</th>
+        </tr>
+        <tr>
+          <td><%= @review.review_title %></td>
+        </tr>
+        <tr>
+          <th>コメント内容</th>
+        </tr>
+        <tr>
+          <td><%= @review.review_comment %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<p>レビュー削除機能追加予定</p>

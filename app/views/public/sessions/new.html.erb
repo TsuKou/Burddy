@@ -1,0 +1,51 @@
+<div class="contaier py-5">
+  <div class="row text-center justify-content-center">
+    <h2 class="title-background">ログイン</h2>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="text-center mt-3">会員の方はこちらからログイン</div>
+
+    <div class="row justify-content-center ">
+      <div class="col-4">
+
+        <div class="field form-group">
+          <div class="form-inline">
+            <%= f.label :メールアドレス, class: "control-label justify-content-start mx-5 mt-4"%>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mt-4 ml-3" %>
+          </div>
+        </div>
+
+        <div class="field form-group">
+          <div class="form-inline">
+            <%= f.label :パスワード, class: "control-label justify-content-start mx-5 mt-4" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control ml-5 mt-4" %>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+        <div class="field form-group">
+          <div class="form-inline">
+            <%= f.label :" ", class: "col-md-4" %>
+            <%= f.check_box :remember_me, class: "form-control ml-4" %>
+            <%= f.label :remember_me, class: "control-label justify-content-start" %>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.label :" ", class: "col-md-4" %>
+          <%= f.submit "ログイン", class: "btn btn-success ml-3 col-md-4" %>
+        </div>
+        <% end %>
+
+        <div class="text-center my-5" >会員登録がお済みではない方は新規登録ボタンから登録を行ってください。</div>
+        <div class="row">
+          <div class="text-center offset-5">
+            <%= render "public/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
