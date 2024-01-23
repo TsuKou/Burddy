@@ -247,7 +247,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
-  pry-rails
+  devise
   dotenv-rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
@@ -255,6 +255,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  pry-rails
   puma (~> 3.11)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.6)
