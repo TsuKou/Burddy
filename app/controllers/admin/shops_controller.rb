@@ -23,7 +23,7 @@ class Admin::ShopsController < ApplicationController
       flash[:notice] = "新規登録しました"
       redirect_to admin_shops_path
     else
-      flash.now[:notice] = "登録に失敗しました"
+      flash.now[:alert] = "登録に失敗しました"
       render :new
     end
   end

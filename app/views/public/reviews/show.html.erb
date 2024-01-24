@@ -1,29 +1,24 @@
-<table class="table">
-  <tr>
-    <th><%= @user.user_name %>さんのレビュー一覧画面</th>
-  </tr>
-  <tr>
-    <th></th>
-    <th>コメントタイトル</th>
-    <th>コメント内容</th>
-    <th>レビュー</th>
-    <th>いいね</th>
-    <th></th>
-  </tr>
-  <% @reviews.each do |review| %>
-  <tr>
-    <td> <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->
-      <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
-        <%= image_tag review.image, size: "150x150" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "150x150" %>
-      <% end %>
-    </td>
-    <td><%= review.review_title %></td>
-    <td><%= review.review_comment %></td>
-    <td><%= render "static.rate", review: review %></td>
-    <td><%= render "public/favorites/favorite" , review: review %></td>
-    <td><%= link_to "コメントする", new_review_comments_path(review.id) %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background my-5"><%= @review.user.user_name %>さんのレビュー詳細</h2>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>レビュー店舗</th>
+          <td><%= @review.shop.shop_name %></td>
+        </tr>
+        <tr>
+          <th>コメントタイトル</th>
+          <td><%= @review.review_title %></td>
+        </tr>
+        <tr>
+          <th>コメント内容</th>
+          <td><%= @review.review_comment %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@
         <td><%= comment.comment_title %></td>
         <td><%= comment.comment_body %></td>
         <td><%= link_to "編集", edit_review_comments_path(comment.id) %></td>
-        <td><%= %></td>
+        <td><%= link_to "削除", %></td>
       </tr>
       <% end %>
     </table>

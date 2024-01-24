@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "変更を保存しました"
       redirect_to users_mypage_path
     else
-      flash.now[:notice] = "変更に失敗しました"
+      flash.now[:alert] = "変更に失敗しました"
      render :edit# 変更保存後操作していたユーザー情報画面へ移動
     end
   end
@@ -30,7 +30,7 @@ class Public::UsersController < ApplicationController
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_active: false) # current_userが持つis_activeカラムをfalseにupdateして、退会状態にする
     reset_session # セッション情報をすべて削除
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:alert] = "退会処理を実行いたしました"
     redirect_to root_path # 退会後トップ画面に遷移
   end
 

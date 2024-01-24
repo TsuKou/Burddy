@@ -24,7 +24,7 @@ class Admin::ReviewsController < ApplicationController
       flash[:notice] = "投稿に成功しました"
       redirect_to reviews_path
     else
-      flash.now[:notice] = "投稿に失敗しました"
+      flash.now[:alert] = "投稿に失敗しました"
       render :new
     end
   end

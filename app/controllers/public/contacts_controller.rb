@@ -1,6 +1,6 @@
 class Public::ContactsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @contact = Contact.new # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
   end
@@ -11,7 +11,7 @@ class Public::ContactsController < ApplicationController
     flash[:notice] = "投稿に成功しました"
       redirect_to admin_contacts_path      # 4. お問い合わせサンクス画面へリダイレクト
     else
-      flash.now[:notice] = "投稿に失敗しました"
+      flash.now[:alert] = "投稿に失敗しました"
       render :new                           #失敗したらNewアクションへ遷移
     end
   end

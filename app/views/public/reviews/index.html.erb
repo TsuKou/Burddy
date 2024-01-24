@@ -18,7 +18,7 @@
             <%= image_tag 'no_image', size: "150x150" %>
           <% end %>
         </td>
-        <td><%= review.review_title %></td>
+        <td><%= link_to review.review_title, review_path %></td>
         <td><%= review.review_comment %></td>
         <td><%= render "static.rate", review: review %></td>
         <td><%= render "public/favorites/favorite" , review: review %></td>

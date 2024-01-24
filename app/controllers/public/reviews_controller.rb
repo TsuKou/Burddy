@@ -16,12 +16,13 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @reviews = Review.where(user_id: params[:id])
+    @review = Review.find(params[:id])
+    # @reviews = Review.where(user_id: params[:id])
     # whereメソッドを使用してReviewモデル内にある現在ログインしているユーザーIDに紐づいているレビューデータをすべて取り出す
     @user = User.find(params[:id]) # (params[:id])は一つのデータしか取り出せない
   end
 
-  def user_show
+  def user_show # ユーザーページ用の一覧
     @login_users = Review.where(user_id: current_user.id)
     @user = User.find(params[:id])
   end
@@ -33,7 +34,7 @@ class Public::ReviewsController < ApplicationController
     if review.save                         # 3. データをデータベースに保存するためのsaveメソッド実行
       redirect_to reviews_path     # 4. レビュー投稿サンクス画面へリダイレクト
     else
-      flash.now[:notice] = "投稿に失敗しました"
+      flash.now[:alert] = "投稿に失敗しました"
       render :new
     end
   end
