@@ -11,6 +11,10 @@ class Public::CommentsController < ApplicationController
     @comments = Comment.all
   end
 
+  def user_index
+    @user_index = Comment.where(user_id: current_user.id)
+  end
+
   def edit
     @review_comment = Comment.find(params[:id])
   end
@@ -20,8 +24,10 @@ class Public::CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save  # データをデータベースに保存するためのsaveメソッド実行
+      flash[:notice] = "投稿に成功しました"
       redirect_to comments_path(@comment.review)
     else
+      flash.now[:notice] = "投稿に失敗しました"
       render :new
     end
   end

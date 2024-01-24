@@ -51,4 +51,5 @@ class User < ApplicationRecord
       "退会"
     end
   end
+
 end

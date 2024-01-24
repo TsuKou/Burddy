@@ -36,9 +36,24 @@ Rails.application.routes.draw do
 
   scope module: :public do #public側のroot_pathを使用し「/」とするためscope module:を使用
     root to: "homes#top"
+    get "about" => "homes#about", as: "about"
+    # user
+    get "users/check" => "users#check"
+    get "users/mypage" => "users#show"
+    get "users/information/edit" => "users#edit"
+    patch "users/information" => "users#update"
+    patch "users/withdraw" => "users#withdraw"
+    # contact
     get "contacts/thanks" => "contacts#thanks"
+    # review
+    get "review/:id/user_show" => "reviews#user_show", as: "user_review"
     get "reviews/thanks" => "reviews#thanks"
+    # tagsearch
     get "tagsearches/search" => "tagsearches#search"
+    # comment
+    get "comments/:id/user_index" => "comments#user_index", as: "user_index"
+
+
 
     resources :contacts, only: [:new, :create, :index, :show]
     resources :users, only: [:show, :edit, :update] do
@@ -57,13 +72,7 @@ Rails.application.routes.draw do
     resources :tagsearches, only: [:index]
 
     # URLをカスタマイズするために下記のような記述をしました。
-    get "about" => "homes#about", as: "about"
-    get "users/mypage" => "users#show"
-    get "users/information/edit" => "users#edit"
-    patch "users/information" => "users#update"
-    get "users/check" => "users#check"
-    patch "users/withdraw" => "users#withdraw"
-    get "review/:id/user_show" => "reviews#user_show", as: "user_review"
+
   end
 
 

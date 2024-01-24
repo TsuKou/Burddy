@@ -21,8 +21,10 @@ class Admin::ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
 
     if @review.save
+      flash[:notice] = "投稿に成功しました"
       redirect_to reviews_path
     else
+      flash.now[:notice] = "投稿に失敗しました"
       render :new
     end
   end
@@ -30,6 +32,7 @@ class Admin::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+    flash[:alert] = "投稿を削除しました"
     redirect_to admin_reviews_path
   end
 

@@ -8,8 +8,10 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)   # １.&2. データを受け取り新規登録するためのインスタンス作成
     if @contact.save                         # 3. データをデータベースに保存するためのsaveメソッド実行
+    flash[:notice] = "投稿に成功しました"
       redirect_to admin_contacts_path      # 4. お問い合わせサンクス画面へリダイレクト
     else
+      flash.now[:notice] = "投稿に失敗しました"
       render :new                           #失敗したらNewアクションへ遷移
     end
   end
