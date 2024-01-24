@@ -55,4 +55,5 @@ class Public::UsersController < ApplicationController
                                  :address
                                  )
   end
+
 end
