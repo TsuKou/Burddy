@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :show, :create, :edit, :destroy]
     resources :contacts, only: [:index, :show]
     resources :tagsearches, only: [:index]
+    resources :comments, only: [:edit]
   end
 
   scope module: :public do #public側のroot_pathを使用し「/」とするためscope module:を使用

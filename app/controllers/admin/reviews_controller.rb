@@ -30,10 +30,10 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
-    flash[:alert] = "投稿を削除しました"
-    redirect_to admin_reviews_path
+    @review = Review.find(params[:id])    # データ(レコード)を1件取得
+    @review.destroy                       # データ(レコード)を削除
+    flash[:alert] = "投稿を削除しました"  # 削除メッセージを表示
+    redirect_to admin_reviews_path        # レビュー投稿一覧画面へリダイレクト
   end
 
   private
