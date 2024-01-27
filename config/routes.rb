@@ -40,12 +40,12 @@ Rails.application.routes.draw do
     get "about" => "homes#about", as: "about"
     # user
     get "users/check" => "users#check"
-    get "users/mypage" => "users#show"
+    get "users/:id/mypage" => "users#show", as: "mypage"
     get "users/information/edit" => "users#edit"
     patch "users/information" => "users#update"
     patch "users/withdraw" => "users#withdraw"
     # contact
-    get "contacts/thanks" => "contacts#thanks"
+    get "contacts/thanks" => "contacts#thanks", as: "contact_thanks"
     # review
     get "review/:id/user_show" => "reviews#user_show", as: "user_review"
     get "reviews/thanks" => "reviews#thanks"

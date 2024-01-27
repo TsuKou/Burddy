@@ -27,9 +27,9 @@
             <% end %>
           </td>
           <td>
-            <%= link_to review.review_title.truncate(15), review_path(review) %><br>
+            <%= link_to review.review_title.truncate(15), review %><br>
             <%= review.review_comment.truncate(15) %><br>
-            <%= link_to review.user.user_name, review_path(review.id)  %><br>
+            <%= link_to review.user.user_name, user_path(review.user_id)  %><br>
             <%= link_to review.shop.shop_name, shop_path(review.shop.id) %>
           </td>
         </tr>

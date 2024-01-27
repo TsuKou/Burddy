@@ -30,4 +30,24 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col">
+      <%= render "public/favorites/favorite" , review: @review %>
+    </div>
+  </div>
+
+  <% if current_user.id == @review.user_id %>
+  <div class="row">
+    <div class="col">
+      <%= link_to "編集", edit_review_path(@review), class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= link_to "削除", review_path(@review), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger' %>
+    </div>
+  </div>
+  <% end %>
+
 </div>

@@ -1,6 +1,7 @@
 <%= form_with url: tagsearches_search_path, method: :get, local: true do |f| %> <!--local: trueは同期通信を有効にしページをリロードするために必要-->
   <div class="form-inline"> <!--これが無いと検索欄と検索ボタンが分離してしまう-->
-    <%= f.text_field :content, class:"form-control me-2", placeholder:"例)店舗名 ハンバーガー..." %>
-    <%= f.submit "タグ検索", class:"btn btn-outline-success" %>
+    <%= f.text_field :content, class:"form-control me-2 mr-1", placeholder: "例)店舗名 ハンバーガー..." %>
+    <%= f.text_field :keyword, class: "form-control me-2 mx-1", placeholder: "都道府県を入力してください" %>
+    <%= f.submit "検索", class:"btn btn-outline-success ml-1" %>
   </div>
 <% end %>

@@ -1,13 +1,14 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:destroy]
+  before_action :ensure_correct_user, only: [:edit, :destroy]
+  # before_action :ensure_guest_user, only: [:edit, :update] # ゲストユーザー用アクセス制限、
 
   def new
     @review = Review.new(shop_id: params[:shop_id])  # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
     # @shop = Review.find(params[:shop_id])
   end
 
-  def index
+  def index # 別ユーザー用の一覧
     @reviews = Review.where(user_id: current_user.id)
     # review_ids = current_user.shops.pluck(:review_id)
     # @shop_reviews = Review.find(review_ids)
@@ -23,7 +24,7 @@ class Public::ReviewsController < ApplicationController
     # @user = User.find(params[:id]) # (params[:id])は一つのデータしか取り出せない
   end
 
-  def user_show # ユーザーページ用の一覧
+  def user_show # user_review_path ログインユーザー用の一覧
     @login_users = Review.where(user_id: current_user.id) # Reviewモデル内の特定ユーザーIDのレビューデータをすべて取得
     @user = User.find(params[:id])
   end
@@ -73,6 +74,13 @@ class Public::ReviewsController < ApplicationController
     @reviews = current_user.reviews
     @review = @reviews.find_by(id: params[:id])
     redirect_to reviews_path unless @review
+  end
+
+  def ensure_guest_user # ゲストユーザーがプロフィール編集画面へ遷移、更新させないため
+    @review = User.find(params[:id])
+    if @user.email == "guest@example.com"
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
   end
 
 end

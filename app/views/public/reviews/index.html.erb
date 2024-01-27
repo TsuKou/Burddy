@@ -25,6 +25,9 @@
         <td><%= review.review_comment.truncate(10) %></td>
         <td><%= render "static.rate", review: review %></td>
         <td><%= render "public/favorites/favorite" , review: review %></td>
+        <td><%= link_to "編集", edit_review_path(review.id) %></td>
+        <td><%= link_to "削除", review_path(review.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"},
+          class: 'btn btn-danger'%></td>
         <!--<td><%#= link_to "コメントする", new_review_comments_path(review.id) %></td>-->
       </tr>
       <% end %>
