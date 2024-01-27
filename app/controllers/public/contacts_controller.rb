@@ -1,5 +1,5 @@
 class Public::ContactsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, 
 
   def new
     @contact = Contact.new # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。

@@ -1,24 +1,33 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h2 class="title-background my-5"><%= @review.user.user_name %>さんのレビュー詳細</h2>
+    <h2 class="my-5"><%= @review.user.user_name %>さんのレビュー詳細</h2>
   </div>
 
   <div class="row justify-content-center">
     <div class="col">
-      <table class="table">
-        <tr>
-          <th>レビュー店舗</th>
-          <td><%= @review.shop.shop_name %></td>
-        </tr>
-        <tr>
-          <th>コメントタイトル</th>
-          <td><%= @review.review_title %></td>
-        </tr>
-        <tr>
-          <th>コメント内容</th>
-          <td><%= @review.review_comment %></td>
-        </tr>
-      </table>
+      <div class="h3 mb-2">レビュー店舗容</div>
+      <div class="border p-1 text-break", style="width: 40%">
+        <%= @review.shop.shop_name %>
+      </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+      <h3 class="mb-2">コメントタイトル</h3>
+      <div class="border p-1 text-break", style="width: 40%">
+        <%= @review.review_title %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h3 class="mb-2">コメント内容</h3>
+      <div class="border p-1 text-break", style="width: 40%">
+        <%= @review.review_comment %>
+      </div>
+    </div>
+  </div>
+
 </div>

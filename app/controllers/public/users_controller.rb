@@ -17,7 +17,7 @@ class Public::UsersController < ApplicationController
       redirect_to users_mypage_path
     else
       flash.now[:alert] = "変更に失敗しました"
-     render :edit# 変更保存後操作していたユーザー情報画面へ移動
+      render :edit# 変更保存後操作していたユーザー情報画面へ移動
     end
   end
 

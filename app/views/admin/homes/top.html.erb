@@ -51,7 +51,7 @@
         <% @reviews.each do |review| %>
         <tr>
           <td>
-            <%= review.review_title %> <!--レビュータイトル-->
+            <%= review.review_title.truncate(10) %> <!--レビュータイトル-->
           <br><%= link_to review.shop.shop_name, admin_shop_path(review.shop.id) %> <!--レビューした対象店舗名-->
           <br><%= link_to review.user.user_name, admin_review_path(review.user_id) %> <!--レビューしたユーザー名-->
           <!--<td><%#= review %></td>--> <!---->

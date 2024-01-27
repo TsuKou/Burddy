@@ -2,7 +2,7 @@
   <div class="row align-items-center">
     <!--1列目-->
     <div class="col-1"></div>
-    <div class="col-5">
+    <div class="border col-5">
       <table>
         <% @shops.each do |shop| %>
         <tr>
@@ -27,8 +27,8 @@
             <% end %>
           </td>
           <td>
-            <%= review.review_title %><br>
-            <%= review.review_comment %><br>
+            <%= link_to review.review_title.truncate(15), review_path(review) %><br>
+            <%= review.review_comment.truncate(15) %><br>
             <%= link_to review.user.user_name, review_path(review.id)  %><br>
             <%= link_to review.shop.shop_name, shop_path(review.shop.id) %>
           </td>

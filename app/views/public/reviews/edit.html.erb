@@ -1,5 +1,46 @@
-<div>レビュー投稿情報編集フォーム</div>
-<div>店舗名</div>
-<div>タイトル</div>
-<div>コメント</div>
-<div>変更保存</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="my-5">レビュー内容変更</h2>
+  </div>
+
+  <%= form_with model: @review, url: review_path, method: :patch do |f| %>
+
+  <div class="row justify-content-center">
+    <div class="col-6">
+
+      <div class="field form-group">
+        <div class="form-row mb-5">
+          <%= f.label :タイトル, class: "control-label h3" %>
+          <%= f.text_field :review_title, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-row mb-5">
+          <%= f.label :コメント, class: "control-label h3" %>
+          <%= f.text_area :review_comment, class: "form-control", rows: 6 %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-row">
+          <%= f.label :タグ, class: "control-label justify-content-start" %>
+          <%= f.text_field :category, size: 53, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div>
+        <%= render 'star', review: @review %>
+      </div>
+
+      <div class="field form-group">
+        <div class="form-row">
+          <%= f.submit  "変更を保存", class: "form-control btn btn-success" %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+  </div>
+</div>
