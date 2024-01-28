@@ -14,6 +14,11 @@ class Shop < ApplicationRecord
 
   # カテゴリタグをshopに追加する
   validates :category, presence: true
+  validates :shop_name, presence: true
+  validates :shop_address, presence: true
+  validates :telephone_number, presence: true
+  validates :business_hours, presence: true
+  validates :regular_holiday, presence: true
 
     # favorited_by?(user)メソッドが指定されたユーザーが特定のレビューをいいねしているか判定する物
   # いいねしてなければ「true」していなければ「flase」となる、
@@ -22,20 +27,5 @@ class Shop < ApplicationRecord
   end
 
   # admin側からくるshopの登録情報を保存する
-  def shop_params
-  params.require(:shop).permit(:user_id,
-                              :review_id,
-                              :shop_name,
-                              :shop_address,
-                              :telephone_number,
-                              :business_hours,
-                              :regular_holiday,
-                              :access_information,
-                              :parking,
-                              :menu,
-                              :remarks,
-                              :category # 投稿検索機能（タグ）で検索するために必要なパラメーター
-  )
-  end
 
 end

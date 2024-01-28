@@ -1,43 +1,45 @@
 <div class="container">
   <div class="row mb-2">
     <div class="col-lg-10">
-     <label class="h4">マイページ</label>
-     <div>
-       <storng>登録情報</storng>
-     </div>
+      <label class="h4">マイページ</label>
+      <div>
+        <storng>登録情報</storng>
+      </div>
 
-     <table class="table table-borderless">
-     <tr>
-      <td><%= link_to "登録情報編集", edit_user_path(@user.id), class: "btn btn-success" %></td>
-     </tr>
-     <tr>
-      <th>ユーザー名</th><td><%= @user.user_name %></td>
-     </tr>
+      <table class="table table-borderless">
+      <% if current_user.id == @user.id %> <!--ログインユーザーか判断し「ture」であれば「登録情報編集」を表示する-->
       <tr>
-      <th>氏名</th><td><%= @user.last_name %><%= @user.first_name %></td>
-     </tr>
+        <td><%= link_to "登録情報編集", edit_user_path(@user.id), class: "btn btn-success" %></td>
+      </tr>
+      <% end %>
       <tr>
-      <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>
-     </tr>
+        <th>ユーザー名</th><td><%= @user.user_name %></td>
+      </tr>
       <tr>
-      <th>郵便番号</th><td><%= @user.post_code %></td>
-     </tr>
+        <th>氏名</th><td><%= @user.last_name %><%= @user.first_name %></td>
+      </tr>
       <tr>
-      <th>住所</th><td><%= @user.address %></td>
-     </tr>
+        <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>
+      </tr>
       <tr>
-      <th>電話番号</th><td><%= @user.telephone_number %>
-     </tr>
+        <th>郵便番号</th><td><%= @user.post_code %></td>
+      </tr>
       <tr>
-      <th>メールアドレス</th><td><%= @user.email %></td>
-     </tr>
-     <tr>
-      <td><%= link_to "レビュー", reviews_path(current_user), class:"btn btn-success" %></td>
-     </tr>
-     <tr>
-      <td><%= link_to "いいね一覧", favorites_path(current_user), class:"btn btn-success" %></td>
-     </tr>
-     <tr>
-      <td><%= link_to "コメント一覧",comments_path %></td>
-     </tr>
-     </table>
+        <th>住所</th><td><%= @user.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th><td><%= @user.telephone_number %>
+      </tr>
+      <tr>
+        <th>メールアドレス</th><td><%= @user.email %></td>
+      </tr>
+      <tr>
+      <td><%= link_to "レビュー", other_user_index_path(@user), class:"btn btn-success" %></td>
+      </tr>
+      <tr>
+      <td><%= link_to "いいね一覧", other_favorites_path(@user), class:"btn btn-success" %></td>
+      </tr>
+      <tr>
+      <td><%#= link_to "コメント一覧", user_index_path(@user) %></td>
+      </tr>
+      </table>

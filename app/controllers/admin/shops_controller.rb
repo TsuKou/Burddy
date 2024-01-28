@@ -20,8 +20,10 @@ class Admin::ShopsController < ApplicationController
   def create
     shop = Shop.new(shop_params)
     if shop.save
+      flash[:notice] = "新規登録しました"
       redirect_to admin_shops_path
     else
+      flash.now[:alert] = "登録に失敗しました"
       render :new
     end
   end
@@ -29,6 +31,7 @@ class Admin::ShopsController < ApplicationController
   def update
     shop = Shop.find(params[:id]) # URLからアドレスを引っ張ってきてページへ反映
     shop.update!(shop_params)
+    flash[:notice] = "変更を保存しました"
     redirect_to admin_shop_path(shop.id) # 変更保存後操作していたユーザー情報画面へ移動
   end
 

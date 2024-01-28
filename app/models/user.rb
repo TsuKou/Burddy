@@ -22,9 +22,10 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :email, presence: true
   validates :encrypted_password, presence: true
-  validates :post_code, presence: true
+  validates :post_code, presence: true, length: { minimum:7,maximum:7}
   validates :address, presence: true
-  validates :telephone_number, presence: true
+  validates :telephone_number, presence: true, length: { minimum:10,maximum:11}
+  validates :user_name, presence: true, length: { minimum:3}
 
   #ゲストログイン用 User.guestのguestメソッド（機能部分）
   GUEST_USER_EMAIL = "guest@example.com"
@@ -33,6 +34,20 @@ class User < ApplicationRecord
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|   #find_or_create_by!とは...データの検索と作成を自動的に判断して処理を行うメソッド
       user.password = SecureRandom.urlsafe_base64           #SecureRandom.urlsafe_base64とは...ランダムな文字列を生成するRubyのメソッドの一種
       # user.name = "guestuser"
+    end
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.user_name = "Guest_user"
+      user.last_name = "ゲスト(姓)"
+      user.first_name = "ゲスト(名)"
+      user.last_name_kana = "ゲスト(セイ)"
+      user.first_name_kana = "ゲスト(メイ)"
+      user.post_code = "9999999"
+      user.address = "ゲスト(住所)"
+      user.telephone_number = "99900001111"
     end
   end
 
@@ -51,4 +66,5 @@ class User < ApplicationRecord
       "退会"
     end
   end
+
 end

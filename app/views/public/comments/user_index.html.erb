@@ -7,13 +7,13 @@
         <th>コメントタイトル</th>
         <th>コメント内容</th>
       </tr>
-      <% @comments.each do |comment| %>
+      <% @user_index.each do |comment| %>
       <tr>
         <td><%= comment.review.user.user_name %></td>
         <td><%= comment.comment_title %></td>
         <td><%= comment.comment_body %></td>
-        <td><%= link_to "編集", edit_review_comments_path(comment.id) %></td>
-        <td><%= link_to "削除", %></td>
+        <td><%= link_to "編集", edit_review_comments_path(comment) %></td>
+        <td><%= link_to "削除", review_path(@user_index.id), method: :delete, data: { confirm: '本当に消しますか？' }%></td>
       </tr>
       <% end %>
     </table>

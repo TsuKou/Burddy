@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h2 class="title-background my-5">レビュー一覧</h2>
+    <h2 class="title-background my-5"><%= @shop.shop_name %>へのレビュー一覧</h2>
   </div>
 
   <div class="row justify-content-center">
@@ -14,7 +14,7 @@
           <th>会員氏名</th>
           <th>レビュータイトル</th>
         </tr>
-        <% @reviews.each do |review| %>
+        <% @shop_review_index.each do |review| %>
         <tr>
           <td><%= review.id %></td>
           <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
@@ -22,12 +22,9 @@
           <td><%= link_to review.user.user_name, admin_user_path(review.user_id) %></td>
           <td><%= review.user.full_name %></td>
           <td><%= link_to review.review_title.truncate(10), admin_review_path(review.id) %></td>
-          <td><%= link_to "削除", admin_review_path(review), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger' %></td>
         </tr>
         <% end %>
       </table>
     </div>
   </div>
 </div>
-
-<div><%#= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: '本当に削除しますか?' } %></div>

@@ -1,21 +1,30 @@
-<table class="table table-hover table-inverse">
-  <caption><%= @model %>s search for <%= @word %></caption>
-  <thead>
-      <th>店舗名</th>
-      <th>レビュー数</th>
-      <th>いいね数</th>
-      <th>タグ</th>
-    </tr>
-  </thead>
-  <% @shops.each do |shop| %>
-  <tbody>
-    <tr>
-      <td><%= link_to shop.shop_name, shop_path(shop) %></td>
-      <td><%= shop.reviews.count %></td>
-      <td><%= shop.favorites.count %></td>
-      <td><%= shop.category %></td>
-      <td><%= link_to "編集", edit_admin_shop_path(shop.id) %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <caption class="h2">"<%= @word %> <%= @keyword %>"検索結果</caption>
+  </div>
+
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>店舗名</th>
+          <th>レビュー数</th>
+          <th>いいね数</th>
+          <th>タグ</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @shops.each do |shop| %>
+      <tbody>
+        <tr>
+          <td><%= link_to shop.shop_name, shop_path(shop) %></td> <!--店舗名を表示-->
+          <td><%= shop.reviews.count %></td> <!--レビュー数を表示-->
+          <td><%= shop.favorites.count %></td> <!--いいね数を表示-->
+          <td><%= shop.category %></td> <!--タグを表示-->
+          <td><%= link_to "編集", edit_admin_shop_path(shop.id) %></td> <!--店舗情報編集リンク-->
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+
+  </div>
+</div>

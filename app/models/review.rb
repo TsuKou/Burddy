@@ -8,7 +8,11 @@ class Review < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   has_one_attached :image #reviewで画像を表示する為
-
+  
+  validates :review_title, presence: true
+  validates :review_comment, presence: true
+  validates :category, presence: true
+  validates :star, presence: true
 
   # いいねはreviewに依存してるからreviewが消えたらいいねも消えるようにする
   def favorited_by?(user)

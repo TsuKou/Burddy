@@ -14,6 +14,7 @@ class Admin::UsersController < ApplicationController
   def update
     user = User.find(params[:@id]) # URLからアドレスを引っ張ってきてページへ反映
     user.update!(user_params)
+    flash[:notice] = "変更を保存しました"
     redirect_to admin_user_path(user) # 変更保存後操作していたユーザー情報画面へ移動
   end
 

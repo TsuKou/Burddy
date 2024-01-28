@@ -1,15 +1,32 @@
-<h2>コメント投稿フォーム（レビューに対してのコメント投稿）</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2 class="mt-5 mb-5">コメント投稿フォーム</h2>
+  </div>
 
-<h2>レビュー数（後から追加）</h2>
+    <%= form_with model: @comment, url: review_comments_path(@comment.review_id), method: :POST, local: true do |f| %>
 
-<%= form_with model: @comment, url: review_comments_path(@comment.review_id), method: :POST, local: true do |f| %>
-  <h4>タイトル</h4>
-    <%= f.text_field :comment_title %>
-  <h4>内容</h4>
-    <%= f.text_area :comment_body %>
+    <div class="row justify-content-center">
+      <div class="col-6">
 
-  <%= f.hidden_field :review_id %>
-  <%#= f.hidden_field :user_id %>
-
-  <%= f.submit '投稿' %>
-<% end %>
+        <div class="field form-group col-auto">
+          <div class="form-row">
+            <%= f.label :タイトル, class: "h3 control-label " %>
+            <%= f.text_field :comment_title, class: "form-control" %>
+          </div>
+        </div>
+        <div class="field form-group col-auto">
+          <div class="form-row">
+            <%= f.label :内容, class: "h3 control-label" %>
+            <%= f.text_area :comment_body, class: "form-control" %>
+          </div>
+        </div>
+        <div class="field form-group">
+          <div class="form-inline">
+            <%= f.submit '投稿', class: "form-control btn btn-success" %>
+          </div>
+        </div>
+      <%= f.hidden_field :review_id %>
+      <%#= f.hidden_field :user_id %>
+    <% end %>
+  </div>
+</div>
