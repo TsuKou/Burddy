@@ -13,6 +13,7 @@
   <body>
     <header class="sticky-top"> <!--ヘッダーを画面上部に固定する-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light text-white">
+        <!--トップページロゴのリンク先を会員(ユーザー)と管理者で分けるため-->
         <% if user_signed_in? %>
           <a class="navbar-brand" href="/">Burdduy</a>  <!--ユーザー用ログイン後トップページ-->
         <% elsif admin_signed_in? %>
@@ -23,6 +24,8 @@
 
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav ">
+
+            <!--会員(ユーザー)用のヘッダー-->
             <% if user_signed_in? %>  <!--deviseのヘルパーメソッド、ログインしている時に「ログアウト」、ログインしていない時に「サインアップ」「ログイン」を表示-->
               <li class="nav-item">
                 <%= render 'public/tagsearches/tag_search', class: "nav-link" %>
@@ -45,7 +48,9 @@
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
               </li>
-            <% elsif admin_signed_in? %>
+
+              <!--管理者(admin)用のヘッダー-->
+            <% elsif admin_signed_in? %> <!--管理者(admin)でログインしてるか判断する-->
               <li>
                 <%= render 'admin/tagsearches/tag_search', class: "nav-link" %>
               </li>
@@ -64,6 +69,8 @@
               <li>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
               </li>
+
+              <!--未ログイン状態での表示-->
             <% else %>
               <li class="nav-item">
                 <%= link_to "About", about_path, class: "nav-link" %>
@@ -82,6 +89,7 @@
     </header>
 
     <main>
+      <!--フラッシュメッセージ-->
       <% flash.each do |message_type, message| %>
         <div class="flash-message <%= message_type %>"><%= message %></div>
        <% end %>
@@ -89,6 +97,7 @@
     </main>
 
     <footer>
+      <!--フッター-->
       <nav class="row fixed-bottom navbar navbar-light bg-dark">
         <div><a class="navbar-brand, text-white" href="/contacts/new">お問い合わせ</a></div>
       </nav>
