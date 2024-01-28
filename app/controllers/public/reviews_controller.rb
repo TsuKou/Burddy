@@ -17,6 +17,11 @@ class Public::ReviewsController < ApplicationController
     # @user_reviews =
   end
 
+  def other_user_index
+    @o_u_review = Review.where(user_id: params[:id])
+    @user = User.find(params[:id])
+  end
+
   def show
     @review = Review.find(params[:id])
     # @reviews = User.where(review_id: params[:id])
@@ -25,7 +30,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def user_show # user_review_path ログインユーザー用の一覧
-    @login_users = Review.where(user_id: current_user.id) # Reviewモデル内の特定ユーザーIDのレビューデータをすべて取得
+    @login_users = Review.where(user_id: current_user.id)
+    # @login_users = Review.where(user_id: current_user.id) # Reviewモデル内の特定ユーザーIDのレビューデータをすべて取得
     @user = User.find(params[:id])
   end
 

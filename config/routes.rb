@@ -48,11 +48,14 @@ Rails.application.routes.draw do
     get "contacts/thanks" => "contacts#thanks", as: "contact_thanks"
     # review
     get "review/:id/user_show" => "reviews#user_show", as: "user_review"
+    get "review/:id/other_user_index" => "reviews#other_user_index", as: "other_user_index"
     get "reviews/thanks" => "reviews#thanks"
     # tagsearch
     get "tagsearches/search" => "tagsearches#search"
     # comment
     get "comments/:id/user_index" => "comments#user_index", as: "user_index"
+    # favorite
+    get "favorites/:id/other_index" => "favorites#other_index", as: "other_favorites"
 
 
 

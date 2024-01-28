@@ -4,5 +4,6 @@ class Favorite < ApplicationRecord
   # favoriteはuserに属している
   belongs_to :review
   # favoriteはreviewに属している
+  belongs_to :shop
 # --ここまで--
 end

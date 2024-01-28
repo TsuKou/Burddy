@@ -1,29 +1,32 @@
 <div class="container">
   <div class="row">
-  <!--1列目-->
-    <div class="col ">
+  <!--1列目-店舗一覧-->
+
+    <div class="col-4 mt-4">
       <table>
         <tr>
-          <th>店舗一覧</th>
+          <th class="h3">店舗一覧</th>
         </tr>
       </table>
-      <table class="table-bordered">
+      <table>
         <% @shops.each do |shop| %>
         <tr>
           <td>
-            <%= link_to shop.shop_name, admin_shop_path(shop.id) %> <!--店舗名-->
-            <br><%= shop.shop_address %> <!--店舗_住所-->
+            <%= link_to shop.shop_name.truncate(15), admin_shop_path(shop.id), class: "border-bottom" %> <!--店舗名-->
+            <br><%= shop.shop_address.truncate(20) %> <!--店舗_住所-->
             <br><%= shop.telephone_number %><!--店舗_電話番号-->
           </td>
         </tr>
         <% end %>
       </table>
     </div>
-  <!--2列目-->
-    <div class="col">
+      <!--<div class="col-1"></div>-->
+      
+  <!--2列目-会員一覧-->
+    <div class="col-4 mt-4">
       <table>
         <tr>
-          <th>会員一覧</th>
+          <th class="h3">会員一覧</th>
         </tr>
         <% @users.each do |user| %>
         <tr>
@@ -32,19 +35,21 @@
         </tr>
         <tr>
           <td><%= link_to user.full_name, admin_user_path(user.id) %></td> <!--会員氏名-->
-        </tr>
+          <td><%= link_to "編集", edit_admin_user_path(user.id), class:"btn btn-sm btn-success ml-5" %></td> <!--編集ボタン-->
+        <!--</tr>-->
           <!--<td><%#= user %></td>--> <!--ステータス-->
-        <tr>
-          <td><%= link_to "編集", edit_admin_user_path(user.id), class:"btn btn-sm btn-success" %></td> <!--編集ボタン-->
+        <!--<tr>-->
         </tr>
         <% end %>
       </table>
     </div>
-  <!--3列目-->
-    <div class="col">
+    <!--<div class="col-1"></div>-->
+
+  <!--3列目-レビュー-->
+    <div class="col-4 mt-4">
       <table>
         <tr>
-          <th>レビュー一覧</th>
+          <th class="h3">レビュー一覧</th>
         </tr>
       </table>
       <table>
@@ -52,7 +57,7 @@
         <tr>
           <td>
             <%= review.review_title.truncate(10) %> <!--レビュータイトル-->
-          <br><%= link_to review.shop.shop_name, admin_shop_path(review.shop.id) %> <!--レビューした対象店舗名-->
+          <br><%= link_to review.shop.shop_name.truncate(15), admin_shop_path(review.shop.id) %> <!--レビューした対象店舗名-->
           <br><%= link_to review.user.user_name, admin_user_path(review.user_id) %> <!--レビューしたユーザー名-->
           <!--<td><%#= review %></td>--> <!---->
           </td>
@@ -60,6 +65,7 @@
         <% end %>
       </table>
     </div>
+    <!--<div class="col-2"></div>-->
 
   </div>
 </div>

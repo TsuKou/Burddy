@@ -1,35 +1,50 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <h2 class="my-5"><%= @user.user_name %>さんのレビュー一覧画面</h2>
-  </div>
+<!--使わない-->
+<!--<div class="container">-->
+<!--  <div class="row justify-content-center">-->
+<!--    <h2 class="my-5"><%= @user.user_name %>さんのレビュー一覧画面</h2>-->
+<!--  </div>-->
 
-    <table class="table">
-      <tr>
-        <th></th>
-        <th>コメントタイトル</th>
-        <th>コメント内容</th>
-        <th>レビュー</th>
-        <th>いいね</th>
-        <th></th>
-      </tr>
-      <% @login_users.each do |review| %>
-      <tr>
-        <td> <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->
-          <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
-            <%= image_tag review.image, size: "125x125" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "125x125" %>
-          <% end %>
-        </td>
-        <td><%= link_to review.review_title.truncate(10), review_path(review.id) %></td>
-        <td><%= review.review_comment.truncate(10) %></td>
-        <td><%= render "static.rate", review: review %></td>
-        <td><%= render "public/favorites/favorite" , review: review %></td>
+<!--    <table class="table">-->
+<!--      <tr>-->
+<!--        <th></th>-->
+<!--        <th>コメントタイトル</th>-->
+<!--        <th>コメント内容</th>-->
+<!--        <th>レビュー</th>-->
+<!--        <th>いいね</th>-->
+<!--        <th></th>-->
+<!--      </tr>-->
+<!--      <% @login_users.each do |review| %>-->
+<!--      <tr>-->
+<!--        <td> <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->-->
+<!--          <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->-->
+<!--            <%= image_tag review.image, size: "125x125" %>-->
+<!--          <% else %>-->
+<!--            <%= image_tag 'no_image', size: "125x125" %>-->
+<!--          <% end %>-->
+<!--        </td>-->
+<!--        <td><%= link_to review.review_title.truncate(10), review_path(review.id) %></td>-->
+<!--        <td><%= review.review_comment.truncate(10) %></td>-->
+<!--        <td><%= render "static.rate", review: review %></td>-->
+<!--        <td><%= render "public/favorites/favorite" , review: review %></td>-->
         <!--<td><%#= link_to "コメントする", new_review_comments_path(review.id) %></td>-->
-        <td><%= link_to "編集", edit_review_path(review.id) %></td>
-      </tr>
-      <% end %>
-    </table>
+<!--        <td><%= link_to "編集", edit_review_path(review.id) %></td>-->
+<!--      </tr>-->
+<!--      <% end %>-->
+<!--    </table>-->
 
-  </div>
-</div>
+<!--    <script>-->
+<!--    let elems = Array.from(document.querySelectorAll('.stars'));-->
+<!--    for(let elem of elems){-->
+<!--      let opt = {-->
+<!--        starOff: '<%= asset_path('star-off.png') %>',-->
+<!--        starOn : '<%= asset_path('star-on.png') %>',-->
+<!--        starHalf: '<%= asset_path('star-half.png') %>',-->
+<!--        scoreName: 'review[star]',-->
+<!--        readOnly: true,-->
+<!--      };-->
+<!--      window.raty(elem, opt);-->
+<!--    }-->
+<!--    </script>-->
+
+<!--  </div>-->
+<!--</div>-->

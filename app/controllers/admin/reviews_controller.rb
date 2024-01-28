@@ -12,19 +12,19 @@ class Admin::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
 
     # review_id = Rview.where(review_id)
   end
 
-  def show
-    @user = User.find(params[:id])
-    @comments = @user.comments.where(user: @user)
-  rescue ActiveRecord::RecordNotFound
-    # ユーザーが見つからない場合の処理を記述
-    flash[:error] = 'ユーザーが存在しません。'
-    redirect_to root_path
-  end
+  # def show
+  #   @user = User.find(params[:id])
+  #   @reviews = @user.reviews.where(user: @user)
+  # # rescue ActiveRecord::RecordNotFound
+  # #   # ユーザーが見つからない場合の処理を記述
+  # #   flash[:error] = 'ユーザーが存在しません。'
+  # #   redirect_to root_path
+  # end
 
 
   def create

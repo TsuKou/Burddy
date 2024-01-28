@@ -14,8 +14,8 @@
       </tr>
       <% @reviews.each do |review| %>
       <tr>
-        <td> <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->
-          <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
+        <td>
+          <% if review.image.attached? %>
             <%= image_tag review.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'no_image', size: "100x100" %>
@@ -23,29 +23,31 @@
         </td>
         <td><%= link_to review.review_title.truncate(10), review_path(review.id) %></td>
         <td><%= review.review_comment.truncate(10) %></td>
-        <td><%= render "static.rate", review: review %></td>
+        <td>
+          <%= render "static.rate", review: review %>
+          <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            let elems = Array.from(document.querySelectorAll('.stars'));
+            for(let elem of elems){
+              let opt = {
+                starOff: '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: 'review[star]',
+                readOnly: true,
+              };
+              window.raty(elem, opt);
+            }
+          });
+          </script>
+        </td>
         <td><%= render "public/favorites/favorite" , review: review %></td>
         <td><%= link_to "編集", edit_review_path(review.id) %></td>
-        <td><%= link_to "削除", review_path(review.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"},
-          class: 'btn btn-danger'%></td>
-        <!--<td><%#= link_to "コメントする", new_review_comments_path(review.id) %></td>-->
+        <td><%= link_to "削除", review_path(review.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger'%></td>
+
       </tr>
       <% end %>
     </table>
-
-    <script>
-    let elems = Array.from(document.querySelectorAll('.stars'));
-    for(let elem of elems){
-      let opt = {
-        starOff: '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: 'review[star]',
-        readOnly: true,
-      };
-      window.raty(elem, opt);
-    }
-    </script>
-
   </div>
 </div>
+

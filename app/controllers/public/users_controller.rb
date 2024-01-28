@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
     user = current_user # URLからアドレスを引っ張ってきてページへ反映
     if user.update(user_params)
       flash[:notice] = "変更を保存しました"
-      redirect_to users_mypage_path
+      redirect_to mypage_path
     else
       flash.now[:alert] = "変更に失敗しました"
       render :edit# 変更保存後操作していたユーザー情報画面へ移動

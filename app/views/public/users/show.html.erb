@@ -7,9 +7,11 @@
       </div>
 
       <table class="table table-borderless">
+      <% if current_user.id == @user.id %> <!--ログインユーザーか判断し「ture」であれば「登録情報編集」を表示する-->
       <tr>
         <td><%= link_to "登録情報編集", edit_user_path(@user.id), class: "btn btn-success" %></td>
       </tr>
+      <% end %>
       <tr>
         <th>ユーザー名</th><td><%= @user.user_name %></td>
       </tr>
@@ -32,12 +34,12 @@
         <th>メールアドレス</th><td><%= @user.email %></td>
       </tr>
       <tr>
-      <td><%= link_to "レビュー", reviews_path(current_user), class:"btn btn-success" %></td>
+      <td><%= link_to "レビュー", other_user_index_path(@user), class:"btn btn-success" %></td>
       </tr>
       <tr>
-      <td><%= link_to "いいね一覧", favorites_path(current_user), class:"btn btn-success" %></td>
+      <td><%= link_to "いいね一覧", other_favorites_path(@user), class:"btn btn-success" %></td>
       </tr>
       <tr>
-      <td><%= link_to "コメント一覧", user_index_path(@user) %></td>
+      <td><%#= link_to "コメント一覧", user_index_path(@user) %></td>
       </tr>
       </table>
