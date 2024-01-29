@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all # 登録しているユーザー情報をすべてuserモデルから取得
+    @users = User.all.page(params[:page]).per(10) # 登録しているユーザー情報をすべてuserモデルから取得
   end
 
   def show

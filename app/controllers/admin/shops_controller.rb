@@ -5,7 +5,7 @@ class Admin::ShopsController < ApplicationController
   end
 
   def index
-    @shops = Shop.all
+    @shops = Shop.all.page(params[:page]).per(10)
   end
 
   def show

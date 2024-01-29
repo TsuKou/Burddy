@@ -6,7 +6,7 @@ class Public::FavoritesController < ApplicationController
     review_ids = current_user.favorites.pluck(:review_id)
     #現在ログインしてるユーザー情報からfavorite.pluck(:review_id)を抜き出してreview_idsへ代入　pluckメソッドは（）内の特定カラム値だけを取得する
     # likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @favorite_reviews = Review.find(review_ids)
+    @favorite_reviews = Review.where(id: review_ids).page(params[:page]).per(10)
     @user = current_user #うまくいなかなければif文使用予定
 
     # @favorite = Favorite.find(params[:id])
@@ -16,7 +16,7 @@ class Public::FavoritesController < ApplicationController
   def other_index
     user = User.find(params[:id]) # 1.URLからuser_idをuserに代入する
     user_ids = user.favorites.pluck(:review_id) # 2.user_idに紐づいてるfavoriteモデルからreview_idのデータを取得する
-    @other_favorites = Review.find(user_ids) # 「2.」で代入した値でReviewモデルから指定したユーザーのfavorite(いいね)してるデータのすべてを取得する
+    @other_favorites = Review.where(id: user_ids).page(params[:page]).per(10) # 「2.」で代入した値でReviewモデルから指定したユーザーのfavorite(いいね)してるデータのすべてを取得する
     @user = User.find(params[:id]) #URLからuser_idを拾ってきて代入
   end
 

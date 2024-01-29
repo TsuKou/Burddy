@@ -1,12 +1,12 @@
 class Admin::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.page(params[:page]).per(10)
     @users = User.all
   end
 
   def shop_index
-    @shop_review_index = Review.where(shop_id: params[:id]) # Reviewモデル内にある店舗IDに関してのレビューをすべて取り出す
+    @shop_review_index = Review.where(shop_id: params[:id]).page(params[:page]).per(10) # Reviewモデル内にある店舗IDに関してのレビューをすべて取り出す
     @shop = Shop.find(params[:id])
   end
 
