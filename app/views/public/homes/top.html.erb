@@ -9,7 +9,7 @@
         </tr>
       </table>
       <table class="mt-3">
-        <% @shops.each do |shop| %>
+        <% @shops.first(13).each do |shop| %> <!--.first(13)を使用し表示数を制限-->
         <tr>
           <td class="border-bottom">
             <%= link_to shop.shop_name.truncate(15), shop_path(shop.id) %><br>
@@ -29,13 +29,13 @@
         </tr>
       </table>
       <table class="mt-3">
-        <% @Reviews.each do |review| %>
+        <% @Reviews.first(6).each do |review| %> <!--.first(5)を使用し表示数を制限-->
         <tr>
           <td>
             <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
-              <%= image_tag review.image, size: "125x125" %>
+              <%= image_tag review.image, size: "100x100" %>
             <% else %>
-              <%= image_tag 'no_image', size: "125x125" %>
+              <%= image_tag 'no_image', size: "100x100" %>
             <% end %>
           </td>
           <td class="border-bottom">

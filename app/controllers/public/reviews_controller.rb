@@ -9,7 +9,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index # 別ユーザー用の一覧
-    @reviews = Review.where(user_id: current_user.id)
+    # @reviews = Review.where(user_id: current_user.id)
+    @reviews = Review.where(user_id: current_user.id).page(params[:page]).per(5)
     # review_ids = current_user.shops.pluck(:review_id)
     # @shop_reviews = Review.find(review_ids)
     # @reviews = Review.where(user_id: current_user)
@@ -18,7 +19,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def other_user_index
-    @o_u_review = Review.where(user_id: params[:id])
+    @o_u_review = Review.where(user_id: params[:id]).page(params[:page]).per(5)
     @user = User.find(params[:id])
   end
 
@@ -42,9 +43,9 @@ class Public::ReviewsController < ApplicationController
   def create
     # binding.pry #pry-railsコード
     review = current_user.reviews.new(review_params)  #ログインしてるユーザーが持つレビューデータをすべて取り出す
-    if review.save                         # 3. データをデータベースに保存するためのsaveメソッド実行
+    if review.save                                    # 3. データをデータベースに保存するためのsaveメソッド実行
     flash[:notice] = "投稿に成功しました"
-      redirect_to reviews_path     # 4. レビュー投稿サンクス画面へリダイレクト
+      redirect_to reviews_path                        # 4. レビュー投稿サンクス画面へリダイレクト
     else
       flash.now[:alert] = "投稿に失敗しました"
       render :new
@@ -58,7 +59,7 @@ class Public::ReviewsController < ApplicationController
       redirect_to review_path(review)
     else
       flash.now[:alert] = "変更に失敗しました"
-      render :edit# 変更保存後操作していたユーザー情報画面へ移動
+      render :edit　　　　　　　　　　　　　　　　# 変更保存後操作していたユーザー情報画面へ移動
     end
   end
 
@@ -66,7 +67,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])    # データ(レコード)を1件取得
     @review.destroy                       # データ(レコード)を削除
     flash[:alert] = "投稿を削除しました"  # 削除メッセージを表示
-    redirect_to reviews_path        # レビュー投稿一覧画面へリダイレクト
+    redirect_to reviews_path            　 # レビュー投稿一覧画面へリダイレクト
   end
 
   private
@@ -84,7 +85,7 @@ class Public::ReviewsController < ApplicationController
 
   def ensure_guest_user # ゲストユーザーがプロフィール編集画面へ遷移、更新させないため
     @review = User.find(params[:id])
-    if @user.email == "guest@example.com"
+    if @user.email == "guest@example.com" # ゲストユーザー用メールアドレスか判断する箇所
       redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end

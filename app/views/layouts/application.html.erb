@@ -17,7 +17,7 @@
         <% if user_signed_in? %>
           <a class="navbar-brand" href="/">Burdduy</a>  <!--ユーザー用ログイン後トップページ-->
         <% elsif admin_signed_in? %>
-          <a class="navbar-brand" href="/admin">Burdduy（トップページへ）</a> <!--管理者用トップページ-->
+          <a class="navbar-brand" href="/admin">Burdduy（管理者用トップページへ）</a> <!--管理者用トップページ-->
         <% else %>
           <a class="navbar-brand" href="/">Burdduy</a> <!--ログイン前用トップページ-->
         <% end %>
@@ -51,22 +51,22 @@
 
               <!--管理者(admin)用のヘッダー-->
             <% elsif admin_signed_in? %> <!--管理者(admin)でログインしてるか判断する-->
-              <li>
+              <li class="nav-item">
                 <%= render 'admin/tagsearches/tag_search', class: "nav-link" %>
               </li>
-              <li>
+              <li class="nav-item">
                 <%= link_to "店舗一覧", admin_shops_path, class: "nav-link" %>
               </li>
-              <li>
+              <li class="nav-item">
                 <%= link_to "会員一覧", admin_users_path(current_user), class: "nav-link" %>
               </li>
-              <li>
+              <li class="nav-item">
                 <%= link_to "レビューコメント一覧", admin_reviews_path(current_user), class: "nav-link" %>
               </li>
-              <li>
+              <li class="nav-item">
                 <%= link_to "お問い合わせ", admin_contacts_path, class: "nav-link" %>
               </li>
-              <li>
+              <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>  <!--HTTPメソッドが「DELETE」なので指定、指定しないと「GET」になってしまう-->
               </li>
 
@@ -84,7 +84,6 @@
             <% end %>
           </ul>
         </div>
-
       </nav>
     </header>
 
@@ -96,11 +95,11 @@
       <%= yield %>
     </main>
 
-    <footer>
+    <footer class="footer fixed-bottom bg-light">
       <!--フッター-->
-      <nav class="row fixed-bottom navbar navbar-light bg-dark">
-        <div><a class="navbar-brand, text-white ml-2" href="/contacts/new">お問い合わせ</a></div>
-      </nav>
+      <!--<nav class=" navbar navbar-light ">-->
+        <div><a class="navbar-brand text-black ml-5" href="/contacts/new">お問い合わせ</a></div>
+      <!--</nav>-->
     </footer>
 
   </body>

@@ -1,3 +1,4 @@
+<!--ログインユーザー用のいいね一覧画面-->
 <div class="container">
   <div class="row-10">
     <h2 class="my-3"><%= @user.user_name %>さんがいいねしているコメント一覧</h2>
@@ -10,13 +11,13 @@
       </tr>
       <% @other_favorites.each do |review| %>
       <tr>
-        <td><%= review.shop.shop_name %></td>
-        <td><%= review.review_title %></td>
-        <td><%= review.created_at.strftime("%Y年%-m月%-d日") %></td>
-        <td><%= render "public/favorites/favorite", review: review %></td>
+        <td><%= review.shop.shop_name %></td> <!--レビューしてる店舗名-->
+        <td><%= review.review_title.truncate(25) %></td> <!--レビュータイトル-->
+        <td><%= review.created_at.strftime("%Y年%-m月%-d日") %></td> <!--レビューコメントの投稿日時-->
+        <td><%= render "public/favorites/favorite", review: review %></td> <!--いいねの部分テンプレート-->
       </tr>
       <% end %>
     </table>
-
+    <%= paginate @other_favorites, theme: 'bootstrap-5' %> <!--ページネーション-->
   </div>
 </div>

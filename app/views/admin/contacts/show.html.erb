@@ -1,8 +1,27 @@
 <div class="container">
+  <div class="row justify-content-center">
+    <h2 class="title-background my-5"><%= @contact.contact_name %>さんからのお問い合わせ内容</h2>
+  </div>
 
-  <%= @contact.contact_name %>
-  <%= @contact.contact_title %>
-  <%= @contact.contact_message %>
+  <div class="row justify-content-center">
+    <div class="col-7">
 
+      <!--お問い合わせタイトル内容表示-->
+      <div class=" h2">お問い合わせタイトル</div>
+      <div class="card">
+        <div class="card-body">
+          <%= @contact.contact_title %>
+        </div>
+      </div>
 
+      <!--お問い合わせ内容表示-->
+      <div class="h2">お問い合わせ内容</div>
+      <div class="card">
+        <div class="card-body">
+          <%= @contact.contact_message %>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

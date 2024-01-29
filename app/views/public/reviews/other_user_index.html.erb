@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h2 class="my-5"><%= @user.user_name %>さんのレビュー一覧画面</h2>
+    <h2 class="my-4"><%= @user.user_name %>さんのレビュー一覧画面</h2>
   </div>
 
     <table class="table">
@@ -16,9 +16,9 @@
       <tr>
         <td> <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->
           <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
-            <%= image_tag review.image, size: "125x125" %>
+            <%= image_tag review.image, size: "100x100" %>
           <% else %>
-            <%= image_tag 'no_image', size: "125x125" %>
+            <%= image_tag 'no_image', size: "100x100" %>
           <% end %>
         </td>
         <td><%= link_to review.review_title.truncate(10), review_path(review.id) %></td>
@@ -30,21 +30,22 @@
       </tr>
       <% end %>
     </table>
-
-    <script>
-    let elems = Array.from(document.querySelectorAll('.stars'));
-    for(let elem of elems){
-      let opt = {
-        starOff: '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: 'review[star]',
-        readOnly: true,
-      };
-      window.raty(elem, opt);
-    }
-    </script>
-
-
+    <%= paginate @o_u_review, theme: 'bootstrap-5' %>
   </div>
 </div>
+
+<script>
+let elems = Array.from(document.querySelectorAll('.stars'));
+for(let elem of elems){
+  let opt = {
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[star]',
+    readOnly: true,
+  };
+  window.raty(elem, opt);
+}
+</script>
+
+
