@@ -67,7 +67,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])    # データ(レコード)を1件取得
     @review.destroy                       # データ(レコード)を削除
     flash[:alert] = "投稿を削除しました"  # 削除メッセージを表示
-    redirect_to reviews_path            　 # レビュー投稿一覧画面へリダイレクト
+    redirect_to reviews_path              # レビュー投稿一覧画面へリダイレクト
   end
 
   private

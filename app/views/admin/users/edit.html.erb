@@ -35,8 +35,12 @@
     <tr>
       <th>販売ステータス</th> <!--ラジオボックスで作成-->
 　    <td>
-　      <%= f.radio_button :is_active, true %>有効
-　　    <%= f.radio_button :is_active, false %>退会
+　　    <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active_true, "有効" %>
+      </td>
+      <td>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active_false, "退会" %>
 　　  </td>
     </tr>
     <tr>
