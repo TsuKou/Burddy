@@ -59,12 +59,18 @@ class User < ApplicationRecord
     self.last_name_kana + " " + self.first_name_kana
   end
 
-  def user_status
-    if is_active == true  # is_active ? "有効" : "退会"　と記述できるらしい
-      "有効"
-    else
-      "退会"
-    end
+  # def user_status
+  #   if is_active == true  # is_active ? "有効" : "退会"　と記述できるらしい
+  #     "有効"
+  #   else
+  #     "退会"
+  #   end
+  # end
+  
+  enum is_active: { '有効': true, '退会済': false }
+
+  def active_for_authentication?
+    super && self.is_active == '有効'
   end
 
 end
