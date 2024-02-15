@@ -59,6 +59,8 @@ class User < ApplicationRecord
     self.last_name_kana + " " + self.first_name_kana
   end
 
+  # enum is_active: { '有効': true, '退会済': false }
+
   #会員ステータスの判定
   def user_status
     if is_active == false
@@ -73,4 +75,8 @@ class User < ApplicationRecord
     super && (is_active == true)
   end
 
+  # def active_for_authentication?
+  #   super && self.is_active == '有効'
+  # end
+  
 end
