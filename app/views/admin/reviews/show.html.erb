@@ -1,46 +1,60 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h2 class="title-background my-5"><%= @review.user.user_name %>さんのレビュー内容 </h2>
+    <div class="col text-center">
+      <h2 class="title-background my-5"><%= @review.user.user_name %>さんのレビュー内容 </h2>
+    </div>
   </div>
 
   <div class="row justify-content-center">
-    <div class="col">
-      <table class="table">
+    <div class="col-lg-6">
+      <table class="table table-striped">
         <tr>
-          <th>レビューID</th><td><%= @review.id %></td>
+          <th>レビューID</th>
+          <td><%= @review.id %></td>
         </tr>
         <tr>
-          <th>会員ID</th><td><%= @review.user.id %></td>
+          <th>会員ID</th>
+          <td><%= @review.user.id %></td>
         </tr>
         <tr>
-          <th>投稿日時</th><td><%= @review.created_at.strftime('%Y/%m/%d') %></td>
+          <th>投稿日時</th>
+          <td><%= @review.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <th>店舗名</th><td><%= @review.shop.shop_name %></td>
+          <th>店舗名</th>
+          <td><%= @review.shop.shop_name %></td>
         </tr>
         <tr>
-          <th>ユーザー名</th><td><%= @review.user.user_name %></td>
+          <th>ユーザー名</th>
+          <td><%= @review.user.user_name %></td>
         </tr>
         <tr>
-          <th>氏名</th><td><%= @review.user.full_name %></td>
+          <th>氏名</th>
+          <td><%= @review.user.full_name %></td>
         </tr>
       </table>
+    </div>
+  </div>
 
-      <table class="table-bordered", max-width: 100%; >
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <table class="table table-bordered" style="width: 100%;">
         <tr>
-          <th>タイトル</th>
+          <th class="text-center">タイトル</th>
         </tr>
         <tr>
           <td class="break-word"><%= @review.review_title %></td>
         </tr>
         <tr>
-          <th>コメント内容</th>
+          <th class="text-center">コメント内容</th>
         </tr>
         <tr>
           <td class="break-word"><%= @review.review_comment %></td>
         </tr>
       </table>
-      <div><%= link_to "削除", admin_review_path(@review.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-success" %></div>
+      <div class="text-center mt-3">
+        <%= link_to "削除", admin_review_path(@review.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-danger" %>
+      </div>
     </div>
   </div>
 </div>
