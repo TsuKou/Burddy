@@ -4,40 +4,39 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="row justify-content-center">
-    <div class="col-6">
-
-      <div class="field form-group">
-        <div class="form-inline mb-3">
-          <%= f.label :メールアドレス, class: "control-label justify-content-start mx-5" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control ml-3" %>
-        </div>
-      </div>
-
-      <div class="field form-group">
-        <div class="form-inline mb-3">
-          <%= f.label :パスワード, class: "control-label justify-content-start mx-5" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control ml-5" %>
-        </div>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
+    <div class="row justify-content-center">
+      <div class="col-6">
         <div class="field form-group">
-          <div class="form-inline">
-            <%= f.label :" ", class: "col-md-3 ml-4" %>
-            <%= f.check_box :remember_me, class: "form-control" %>
-            <%= f.label :remember_me, class: "control-labe" %>
+          <div class="form-inline mb-3">
+            <%= f.label :メールアドレス, class: "control-label justify-content-start mx-5" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control ml-3" %>
           </div>
         </div>
-      <% end %>
+
+        <div class="field form-group">
+          <div class="form-inline mb-3">
+            <%= f.label :パスワード, class: "control-label justify-content-start mx-5" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control ml-5" %>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field form-group">
+            <div class="form-inline">
+              <%= f.label :" ", class: "col-md-3 ml-4" %>
+              <%= f.check_box :remember_me, class: "form-control" %>
+              <%= f.label :remember_me, class: "control-label" %>
+            </div>
+          </div>
+        <% end %>
 
         <div class="actions">
           <%= f.label :" ", class: "col-md-3" %>
           <%= f.submit "ログイン", class: "btn btn-success col-md-4" %>
         </div>
-    <% end %>
-
-    <%= render "admin/shared/links" %>
+      </div>
     </div>
-  </div>
+  <% end %>
+
+  <%= render "admin/shared/links" %>
 </div>

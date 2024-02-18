@@ -1,17 +1,21 @@
 <div class="container">
-  <div class="row justift-content-center">
+  <div class="row justify-content-center">
     <h2 class="my-4"><%= @user.user_name %>さんのレビュー一覧画面</h2>
-   </div>
+  </div>
 
-    <table class="table">
+  <table class="table">
+    <thead>
       <tr>
         <th></th>
         <th>コメントタイトル</th>
         <th>コメント内容</th>
         <th>レビュー</th>
         <th>いいね</th>
-        <th></th>
+        <th>編集</th>
+        <th>削除</th>
       </tr>
+    </thead>
+    <tbody>
       <% @reviews.each do |review| %>
       <tr>
         <td>
@@ -29,9 +33,9 @@
         <td><%= link_to "削除", review_path(review.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger'%></td>
       </tr>
       <% end %>
-    </table>
-    <%= paginate @reviews, theme: 'bootstrap-5' %>
-  </div>
+    </tbody>
+  </table>
+  <%= paginate @reviews, theme: 'bootstrap-5' %>
 </div>
 
 <!--<td><%#= render "static.rate", review: review %></td>内に記述すると表示がおかしくなるためここに記述-->

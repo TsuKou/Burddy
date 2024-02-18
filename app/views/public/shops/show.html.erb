@@ -38,10 +38,10 @@
           <th>備考</th>
           <td><%= @shop.remarks %></td>
         </tr>
-        
+
         <tr>
-          <td>
-            <%= link_to "レビューする", new_review_path(shop_id: @shop.id) %>
+          <td colspan="2">
+            <%= link_to "レビューする", new_review_path(shop_id: @shop.id), class: "btn btn-primary" %>
           </td>
         </tr>
       </table>

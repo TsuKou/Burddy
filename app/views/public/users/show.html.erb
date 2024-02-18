@@ -3,12 +3,20 @@
     <div class="col-lg-8">
       <label class="h4">マイページ</label>
     </div>
-    <div class="col-lg-4">
-    <% if current_user.id == @user.id %> <!--ログインユーザーか判断し「ture」であれば「登録情報編集」を表示する-->
-      <%= link_to "登録情報編集", edit_user_path(@user.id), class: "btn btn-success" %>
-    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="list-group">
+      <% if current_user.id == @user.id %> <!--ログインユーザーか判断し「true」であれば「登録情報編集」を表示する-->
+        <%= link_to "登録情報編集", edit_user_path(@user.id), class: "list-group-item list-group-item-action" %>
+      <% end %>
+        <%= link_to "レビュー", other_user_index_path(@user), class: "list-group-item list-group-item-action" %>
+        <%= link_to "いいね一覧", other_favorites_path(@user), class: "list-group-item list-group-item-action" %>
+      </div>
     </div>
 
+    <div class="col-lg-9">
       <table class="table table-borderless">
         <tr>
           <th>ユーザー名</th><td><%= @user.user_name %></td>
@@ -26,18 +34,12 @@
           <th>住所</th><td><%= @user.address %></td>
         </tr>
         <tr>
-          <th>電話番号</th><td><%= @user.telephone_number %>
+          <th>電話番号</th><td><%= @user.telephone_number %></td>
         </tr>
         <tr>
           <th>メールアドレス</th><td><%= @user.email %></td>
         </tr>
-        <tr>
-          <td><%= link_to "レビュー", other_user_index_path(@user), class:"btn btn-success" %></td>
-        </tr>
-        <tr>
-          <td><%= link_to "いいね一覧", other_favorites_path(@user), class:"btn btn-success" %></td>
-        </tr>
-        <tr>
-          <td><%#= link_to "コメント一覧", user_index_path(@user) %></td>
-        </tr>
       </table>
+    </div>
+  </div>
+</div>
