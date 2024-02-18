@@ -1,45 +1,45 @@
 <div class="container">
-  <div class="row mb-2">
-    <div class="col-lg-10">
+  <div class="row my-5">
+    <div class="col-lg-8">
       <label class="h4">マイページ</label>
-      <div>
-        <storng>登録情報</storng>
-      </div>
+    </div>
+  </div>
 
-      <table class="table table-borderless">
-      <% if current_user.id == @user.id %> <!--ログインユーザーか判断し「ture」であれば「登録情報編集」を表示する-->
-      <tr>
-        <td><%= link_to "登録情報編集", edit_user_path(@user.id), class: "btn btn-success" %></td>
-      </tr>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="list-group">
+      <% if current_user.id == @user.id %> <!--ログインユーザーか判断し「true」であれば「登録情報編集」を表示する-->
+        <%= link_to "登録情報編集", edit_user_path(@user.id), class: "list-group-item list-group-item-action" %>
       <% end %>
-      <tr>
-        <th>ユーザー名</th><td><%= @user.user_name %></td>
-      </tr>
-      <tr>
-        <th>氏名</th><td><%= @user.last_name %><%= @user.first_name %></td>
-      </tr>
-      <tr>
-        <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>
-      </tr>
-      <tr>
-        <th>郵便番号</th><td><%= @user.post_code %></td>
-      </tr>
-      <tr>
-        <th>住所</th><td><%= @user.address %></td>
-      </tr>
-      <tr>
-        <th>電話番号</th><td><%= @user.telephone_number %>
-      </tr>
-      <tr>
-        <th>メールアドレス</th><td><%= @user.email %></td>
-      </tr>
-      <tr>
-      <td><%= link_to "レビュー", other_user_index_path(@user), class:"btn btn-success" %></td>
-      </tr>
-      <tr>
-      <td><%= link_to "いいね一覧", other_favorites_path(@user), class:"btn btn-success" %></td>
-      </tr>
-      <tr>
-      <td><%#= link_to "コメント一覧", user_index_path(@user) %></td>
-      </tr>
+        <%= link_to "レビュー", other_user_index_path(@user), class: "list-group-item list-group-item-action" %>
+        <%= link_to "いいね一覧", other_favorites_path(@user), class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <table class="table table-borderless">
+        <tr>
+          <th>ユーザー名</th><td><%= @user.user_name %></td>
+        </tr>
+        <tr>
+          <th>氏名</th><td><%= @user.last_name %><%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th>氏名（カナ）</th><td><%= @user.full_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th><td><%= @user.post_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th><td><%= @user.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th><td><%= @user.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th><td><%= @user.email %></td>
+        </tr>
       </table>
+    </div>
+  </div>
+</div>
