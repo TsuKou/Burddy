@@ -42,8 +42,8 @@ class Public::ReviewsController < ApplicationController
 
   def create
     # binding.pry #pry-railsコード
-    review = current_user.reviews.new(review_params)  #ログインしてるユーザーが持つレビューデータをすべて取り出す
-    if review.save                                    # 3. データをデータベースに保存するためのsaveメソッド実行
+    @review = current_user.reviews.new(review_params)  #ログインしてるユーザーが持つレビューデータをすべて取り出す
+    if @review.save                                    # 3. データをデータベースに保存するためのsaveメソッド実行
     flash[:notice] = "投稿に成功しました"
       redirect_to reviews_path                        # 4. レビュー投稿サンクス画面へリダイレクト
     else
@@ -54,7 +54,7 @@ class Public::ReviewsController < ApplicationController
 
   def update
     review = Review.find(params[:id])
-    if review.update!(review_params)
+    if review.update(review_params)
       flash[:notice] = "変更を保存しました"
       redirect_to review_path(review)
     else
@@ -67,7 +67,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])    # データ(レコード)を1件取得
     @review.destroy                       # データ(レコード)を削除
     flash[:alert] = "投稿を削除しました"  # 削除メッセージを表示
-    redirect_to reviews_path            　 # レビュー投稿一覧画面へリダイレクト
+    redirect_to reviews_path              # レビュー投稿一覧画面へリダイレクト
   end
 
   private

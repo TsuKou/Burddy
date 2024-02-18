@@ -41,11 +41,11 @@
         <tr>
           <th>会員ステータス</th>
           <td>
-          <% if @user.is_active == true %>
-            <p class="text-success">有効</p>
-          <% else %>
-            <p class="text-muted">退会</p>
-          <% end %>
+            <% if @user.is_active? %>
+              <p class="text-success font-weight-bold"><%= @user.user_status %></p>
+            <% else %>
+              <p class="text-secondary font-weight-bold"><%= @user.user_status %></p>
+            <% end %>
           </td>
         </tr>
       </table>
