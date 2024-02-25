@@ -4,97 +4,85 @@
   </div>
 
   <%= form_with model: @shop, url: admin_shops_path, method: :post do |f| %>
-  <!--admin_shops_path=admin/shops/indexとしてフォーム送信先に指定-->
-
-  <div class="row justify-content-center">
-    <div class="col-6">
-
-      <!--<div class="field form-group">-->
-      <!--  <div class="form-inline">-->
-          <%#= f.label :画像%>
-      <!--  </div>-->
-      <!--  <div class="form-inline">-->
-          <%#= f.file_field :image, accept: "image/*" %>
-      <!--  <div>-->
-      <!--</div>-->
-
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :店舗名　　　, class: "control-label mx-5" %>
-          <%= f.text_field :shop_name, class: "form-control", style:"width: 60%;" %>
+    <div class="row justify-content-center form-wrapper">
+      <div class="col-md-6">
+        <div class="form-group row">
+          <%= f.label :店舗名, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_field :shop_name, class: "form-control" %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :住所　　　　, class: "control-label mx-5" %>
-          <%= f.text_field :shop_address, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :住所, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_field :shop_address, class: "form-control" %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :電話番号　　, class: "control-label mx-5" %>
-          <%= f.text_field :telephone_number, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :電話番号, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_field :telephone_number, class: "form-control" %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :営業時間　　, class: "control-label mx-5" %>
-          <%= f.text_area :business_hours, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :営業時間, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_area :business_hours, class: "form-control", rows: 3 %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :定休日　　　, class: "control-label mx-5" %>
-          <%= f.text_area :regular_holiday, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :定休日, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_area :regular_holiday, class: "form-control", rows: 3 %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :アクセス情報, class: "control-label mx-5" %>
-          <%= f.text_area :access_information, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :アクセス情報, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_area :access_information, class: "form-control", rows: 3 %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :駐車場　　　, class: "control-label mx-5" %>
-          <%= f.text_field :parking, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :駐車場, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_field :parking, class: "form-control" %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :メニュー　　, class: "control-label mx-5" %>
-          <%= f.text_area :menu, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :メニュー, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_area :menu, class: "form-control", rows: 3 %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :備考　　　　, class: "control-label mx-5" %>
-          <%= f.text_area :remarks, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :備考, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_area :remarks, class: "form-control", rows: 3 %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :タグ　　　　, class: "control-label mx-5" %>
-          <%= f.text_field :category, class: "form-control", style:"width: 60%;" %>
+        <div class="form-group row">
+          <%= f.label :タグ, class: "control-label col-md-4" %>
+          <div class="col-md-8">
+            <%= f.text_field :category, class: "form-control" %>
+          </div>
         </div>
-      </div>
 
-      <div class="field form-group">
-        <div class="form-inline">
-          <%= f.label :" ", class: "col-md-5" %>
-          <%= f.submit "新規登録", class: "form-control btn btn-success col-md-3" %>
+        <div class="form-group row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
-  </div>
 </div>

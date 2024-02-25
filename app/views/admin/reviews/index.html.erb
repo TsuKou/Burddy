@@ -26,9 +26,8 @@
         </tr>
         <% end %>
       </table>
+      <!--ページネーション-->
       <%= paginate @reviews, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
-
-<div><%#= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: '本当に削除しますか?' } %></div>
