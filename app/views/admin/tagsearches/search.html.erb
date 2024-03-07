@@ -17,15 +17,16 @@
       <% @shops.each do |shop| %>
       <tbody>
         <tr>
-          <td><%= link_to shop.shop_name, shop_path(shop) %></td> <!--店舗名を表示-->
-          <td><%= shop.reviews.count %></td> <!--レビュー数を表示-->
-          <td><%= shop.favorites.count %></td> <!--いいね数を表示-->
-          <td><%= shop.category %></td> <!--タグを表示-->
-          <td><%= link_to "編集", edit_admin_shop_path(shop.id) %></td> <!--店舗情報編集リンク-->
+          <td><%= link_to shop.shop_name, shop_path(shop) %></td>        <!--店舗名を表示-->
+          <td><%= shop.reviews.count %></td>                             <!--レビュー数を表示-->
+          <td><%= shop.favorites.count %></td>                           <!--いいね数を表示-->
+          <td><%= shop.category %></td>                                  <!--タグを表示-->
+          <td><%= link_to "編集", edit_admin_shop_path(shop.id) %></td>  <!--店舗情報編集リンク-->
         </tr>
       </tbody>
       <% end %>
     </table>
+    <!--ページネーション-->
     <%= paginate @shops, theme: 'bootstrap-5' %>
   </div>
 </div>

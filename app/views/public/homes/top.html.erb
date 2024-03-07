@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <!--1列目-店舗一覧-->
-    <!--<div class="col-1"></div>-->
     <div class="col-6 mt-4">
       <table>
         <tr>
@@ -9,7 +8,7 @@
         </tr>
       </table>
       <table class="mt-3">
-        <% @shops.first(13).each do |shop| %> <!--.first(13)を使用し表示数を制限-->
+        <% @shops.first(13).each do |shop| %>                                   <!--.first(13)を使用し表示数を制限-->
         <tr>
           <td class="border-bottom">
             <%= link_to shop.shop_name.truncate(15), shop_path(shop.id) %><br>
@@ -20,7 +19,6 @@
       </table>
     </div>
 
-    <!--<div class="col-1"></div>-->
     <!--2列目-レビュー一覧-->
     <div class="col-6 mt-4">
       <table>
@@ -29,10 +27,10 @@
         </tr>
       </table>
       <table class="mt-3">
-        <% @Reviews.first(6).each do |review| %> <!--.first(5)を使用し表示数を制限-->
+        <% @Reviews.first(6).each do |review| %>                                <!--.first(5)を使用し表示数を制限-->
         <tr>
           <td>
-            <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
+            <% if review.image.attached? %>                                     <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
               <%= image_tag review.image, size: "100x100" %>
             <% else %>
               <%= image_tag 'no_image.jpg', size: "100x100" %>
@@ -41,7 +39,7 @@
           <td class="border-bottom">
             <%= link_to review.review_title.truncate(15), review %><br>
             <%= review.review_comment.truncate(15) %><br>
-            <%= link_to review.user.user_name, user_path(review.user_id)  %><br>
+            <%= link_to review.user.user_name, user_path(review.user_id) %><br>
             <%= link_to review.shop.shop_name.truncate(15), shop_path(review.shop.id) %>
           </td>
         </tr>
@@ -49,6 +47,5 @@
       </table>
 
     </div>
-
   </div>
 </div>

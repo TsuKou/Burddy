@@ -14,8 +14,8 @@
       </tr>
       <% @o_u_review.each do |review| %>
       <tr>
-        <td> <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->
-          <% if review.image.attached? %> <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
+        <td>                                                                               <!--review(ブロック変数)に紐ついてるimageをimage_tagに渡して画像表示-->
+          <% if review.image.attached? %>                                                  <!--attached?を使い画像(image)が保存されてる確認、保存されてなければ"no_iamge"を表示-->
             <%= image_tag review.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'no_image.jpg', size: "100x100" %>
@@ -25,7 +25,6 @@
         <td><%= review.review_comment.truncate(10) %></td>
         <td><%= render "static.rate", review: review %></td>
         <td><%= render "public/favorites/favorite" , review: review %></td>
-        <!--<td><%#= link_to "コメントする", new_review_comments_path(review.id) %></td>-->
         <td><%= link_to "編集", edit_review_path(review.id) %></td>
       </tr>
       <% end %>

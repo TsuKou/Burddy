@@ -11,15 +11,16 @@
       </tr>
       <% @other_favorites.each do |review| %>
       <tr>
-        <td><%= review.shop.shop_name %></td> <!--レビューしてる店舗名-->
-        <td><%= review.review_title.truncate(25) %></td> <!--レビュータイトル-->
-        <td><%= review.created_at.strftime("%Y年%-m月%-d日") %></td> <!--レビューコメントの投稿日時-->
-        <td id="favorite_favorite_<%= review.id %>"><!--いいねの部分テンプレート-->
+        <td><%= review.shop.shop_name %></td>                         <!--レビューしてる店舗名-->
+        <td><%= review.review_title.truncate(25) %></td>              <!--レビュータイトル-->
+        <td><%= review.created_at.strftime("%Y年%-m月%-d日") %></td>  <!--レビューコメントの投稿日時-->
+        <td id="favorite_favorite_<%= review.id %>">                  <!--いいねの部分テンプレート-->
           <%= render "public/favorites/favorite", review: review %>
         </td>
       </tr>
       <% end %>
     </table>
-    <%= paginate @other_favorites, theme: 'bootstrap-5' %> <!--ページネーション-->
+    <!--ページネーション-->
+    <%= paginate @other_favorites, theme: 'bootstrap-5' %>
   </div>
 </div>

@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :email, presence: true
-  validates :encrypted_password, presence: true
+  # validates :encrypted_password, presence: true
   validates :post_code, presence: true, length: { minimum:7,maximum:7}
   validates :address, presence: true
   validates :telephone_number, presence: true, length: { minimum:10,maximum:11}
@@ -78,5 +78,5 @@ class User < ApplicationRecord
   # def active_for_authentication?
   #   super && self.is_active == '有効'
   # end
-  
+
 end
