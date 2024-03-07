@@ -4,27 +4,26 @@
     <div class="h2">"<%= @word %> <%= @keyword %>"検索結果</h2>
   </div>
 
-    <table class="table caption-top table-hover　mt-3">
+    <table class="table caption-top table-hover mt-3">
 
       <thead>
         <tr>
           <th>店舗名</th>
           <th>レビュー数</th>
-          <!--<th>いいね数</th>-->
           <th>タグ</th>
         </tr>
       </thead>
       <% @shops.each do |shop| %>
       <tbody>
         <tr>
-          <td><%= link_to shop.shop_name.truncate(30), shop_path(shop) %></td> <!--店舗名を表示-->
-          <td><%= shop.reviews.count %></td> <!--レビュー数(総数)を表示-->
-          <!--<td><%#= shop.favorites.count %></td> <!--いいね数(総数)を表示-->
-          <td><%= shop.category.truncate(20) %></td> <!--店舗タグ付けしているタグを表示-->
+          <td><%= link_to shop.shop_name.truncate(30), shop_path(shop) %></td>   <!--店舗名を表示-->
+          <td><%= shop.reviews.count %></td>                                     <!--レビュー数(総数)を表示-->
+          <td><%= shop.category.truncate(20) %></td>                             <!--店舗タグ付けしているタグを表示-->
         </tr>
       </tbody>
       <% end %>
     </table>
+    <!--ページネーション-->
     <%= paginate @shops, theme: 'bootstrap-5' %>
   </div>
 </div>
